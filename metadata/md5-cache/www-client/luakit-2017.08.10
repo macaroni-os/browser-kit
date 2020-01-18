@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-lua/luafilesystem[luajit=] net-libs/webkit-gtk:4= x11-libs/gtk+:3 luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 ) virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-lua/luassert[luajit=] dev-lua/luacheck[luajit=] x11-base/xorg-server[xvfb] )
+DESCRIPTION=A fast, light, simple to use micro-browser using WebKit and Lua
+EAPI=6
+HOMEPAGE=https://luakit.github.io/luakit
+IUSE=doc luajit test
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-lua/luafilesystem[luajit=] net-libs/webkit-gtk:4= x11-libs/gtk+:3 luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/luakit/luakit/archive/2017.08.10.tar.gz -> luakit-2017.08.10.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=700f083a8f0097d8661426eb0a71645d
