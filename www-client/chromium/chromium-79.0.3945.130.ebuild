@@ -1,4 +1,4 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="+closure-compile component-build cups cpu_flags_arm_neon gnome-keyring +hangouts kerberos pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
+IUSE="+closure-compile component-build cups cpu_flags_arm_neon gnome-keyring +hangouts jumbo-build kerberos pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc vaapi widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="component-build? ( !suid )"
 
@@ -76,6 +76,7 @@ COMMON_DEPEND="
 	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
+	vaapi? ( x11-libs/libva:= )
 "
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND="${COMMON_DEPEND}
@@ -152,6 +153,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-79-gcc-name-clash.patch"
 	"${FILESDIR}/chromium-79-gcc-permissive.patch"
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
+	"${FILESDIR}/enable-vaapi.patch"
 )
 
 pre_build_checks() {
@@ -444,6 +446,9 @@ src_configure() {
 	# for development and debugging.
 	myconf_gn+=" is_component_build=$(usex component-build true false)"
 
+	# https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
+	myconf_gn+=" use_jumbo_build=$(usex jumbo-build true false)"
+
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 
 	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
@@ -498,6 +503,7 @@ src_configure() {
 	myconf_gn+=" use_gnome_keyring=$(usex gnome-keyring true false)"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
+	myconf_gn+=" use_vaapi=$(usex vaapi true false)"
 
 	# TODO: link_pulseaudio=true for GN.
 
@@ -656,6 +662,11 @@ src_install() {
 	local sedargs=( -e "s:/usr/lib/:/usr/$(get_libdir)/:g" )
 	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r3.sh" > chromium-launcher.sh || die
 	doexe chromium-launcher.sh
+
+	if use vaapi; then
+		insinto /usr/share/drirc.d
+		newins "${FILESDIR}"/01-chromium.conf 01-chromium.conf
+	fi
 
 	# It is important that we name the target "chromium-browser",
 	# xdg-utils expect it; bug #355517.

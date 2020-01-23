@@ -1,4 +1,4 @@
-# Copyright 2009-2019 Gentoo Authors
+# Copyright 2009-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -141,19 +141,19 @@ For native file dialogs in KDE, install kde-apps/kdialog.
 "
 
 PATCHES=(
-        "${FILESDIR}/chromium-compiler-r10.patch"
-        "${FILESDIR}/chromium-fix-char_traits.patch"
-        "${FILESDIR}/chromium-unbundle-zlib-r1.patch"
-        "${FILESDIR}/chromium-77-system-icu.patch"
-        "${FILESDIR}/chromium-78-protobuf-export.patch"
-        "${FILESDIR}/chromium-79-gcc-alignas.patch"
-        "${FILESDIR}/chromium-80-unbundle-libxml.patch"
-        "${FILESDIR}/chromium-80-include.patch"
-        "${FILESDIR}/chromium-80-gcc-quiche.patch"
-        "${FILESDIR}/chromium-80-gcc-permissive.patch"
-        "${FILESDIR}/chromium-80-gcc-blink.patch"
-        "${FILESDIR}/chromium-80-gcc-abstract.patch"
-        "${FILESDIR}/chromium-80-gcc-incomplete-type.patch"
+	"${FILESDIR}/chromium-compiler-r11.patch"
+	"${FILESDIR}/chromium-fix-char_traits.patch"
+	"${FILESDIR}/chromium-unbundle-zlib-r1.patch"
+	"${FILESDIR}/chromium-78-protobuf-export.patch"
+	"${FILESDIR}/chromium-79-gcc-alignas.patch"
+	"${FILESDIR}/chromium-80-unbundle-libxml.patch"
+	"${FILESDIR}/chromium-80-gcc-quiche.patch"
+	"${FILESDIR}/chromium-80-gcc-blink.patch"
+	"${FILESDIR}/chromium-80-gcc-abstract.patch"
+	"${FILESDIR}/chromium-81-gcc-dav1d.patch"
+	"${FILESDIR}/chromium-81-gcc-template.patch"
+	"${FILESDIR}/chromium-81-gcc-noexcept.patch"
+	"${FILESDIR}/chromium-81-clang.patch"
 	"${FILESDIR}/enable-vaapi.patch"
 )
 
@@ -232,6 +232,7 @@ src_prepare() {
 		third_party/angle/src/third_party/compiler
 		third_party/angle/src/third_party/libXNVCtrl
 		third_party/angle/src/third_party/trace_event
+		third_party/angle/src/third_party/volk
 		third_party/angle/third_party/glslang
 		third_party/angle/third_party/spirv-headers
 		third_party/angle/third_party/spirv-tools
@@ -275,6 +276,8 @@ src_prepare() {
 		third_party/depot_tools
 		third_party/devscripts
 		third_party/devtools-frontend
+		third_party/devtools-frontend/src/front_end/third_party/fabricjs
+		third_party/devtools-frontend/src/front_end/third_party/wasmparser
 		third_party/devtools-frontend/src/third_party
 		third_party/dom_distiller_js
 		third_party/emoji-segmenter
@@ -451,8 +454,8 @@ src_configure() {
 	# for development and debugging.
 	myconf_gn+=" is_component_build=$(usex component-build true false)"
 
-        # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
-        myconf_gn+=" use_jumbo_build=$(usex jumbo-build true false)"
+	# https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
+	myconf_gn+=" use_jumbo_build=$(usex jumbo-build true false)"
 
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 
@@ -606,6 +609,9 @@ src_configure() {
 		popd > /dev/null || die
 	fi
 
+	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
+	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
+
 	# Explicitly disable ICU data file support for system-icu builds.
 	if use system-icu; then
 		myconf_gn+=" icu_use_data_file=false"
@@ -668,10 +674,10 @@ src_install() {
 	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r3.sh" > chromium-launcher.sh || die
 	doexe chromium-launcher.sh
 
-	if use vaapi; then
-		insinto /usr/share/drirc.d
-		newins "${FILESDIR}"/01-chromium.conf 01-chromium.conf
-	fi
+        if use vaapi; then
+                insinto /usr/share/drirc.d
+                newins "${FILESDIR}"/01-chromium.conf 01-chromium.conf
+        fi
 
 	# It is important that we name the target "chromium-browser",
 	# xdg-utils expect it; bug #355517.
