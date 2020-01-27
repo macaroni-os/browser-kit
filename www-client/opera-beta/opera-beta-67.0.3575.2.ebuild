@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,12 +61,12 @@ RDEPEND="
 QA_PREBUILT="*"
 S=${WORKDIR}
 
-src_unpack() {
-	unpack_deb ${A}
-}
-
 pkg_setup() {
 	OPERA_HOME="usr/$(get_libdir)/${PN}"
+}
+
+src_unpack() {
+	unpack_deb ${A}
 }
 
 src_prepare() {
