@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 MOZ_ESR=0
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
-MOZ_LANGS=(ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb el en en-CA
-en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gn gu-IN
-he hi-IN hr hsb hu hy-AM ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my
-nb-NO nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
-th tr uk ur uz vi xh zh-CN zh-TW )
+# Missing when bumped : be
+MOZ_LANGS=( ach af an ar as ast az bg bn-BD bn-IN br bs ca cs cy da de
+el en en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr fy-NL
+ga-IE gd gl gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko lt
+lv mai mk ml mr ms nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl
+son sq sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
@@ -23,7 +24,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit mozlinguas-v2 nsplugins pax-utils xdg-utils eapi7-ver
+inherit eutils pax-utils xdg-utils gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
@@ -97,7 +98,7 @@ src_install() {
 	# Install icons and .desktop for menu entry
 	for size in ${sizes}; do
 		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newins "${icon_path}/default${size}.png" "${icon}.png"
+		newins "${icon_path}/default${size}.png" "${icon}.png" || die
 	done
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
 	newicon "${S}"/browser/chrome/icons/default/default48.png ${PN}.png
@@ -122,7 +123,7 @@ src_install() {
 	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
 	doins "${FILESDIR}"/local-settings.js
 	insinto ${MOZILLA_FIVE_HOME}
-	newins "${FILESDIR}"/all-gentoo-3.js all-gentoo.js
+	newins "${FILESDIR}"/all-gentoo-2.js all-gentoo.js
 
 	# Install language packs
 	MOZEXTENSION_TARGET="distribution/extensions" \
@@ -144,7 +145,7 @@ src_install() {
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
 	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}" >> ${T}/10${PN}
-	doins "${T}"/10${PN}
+	doins "${T}"/10${PN} || die
 
 	# Plugins dir, still used for flash
 	share_plugins_dir
@@ -153,11 +154,11 @@ src_install() {
 	pax-mark mr "${ED}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
 }
 
-pkg_postinst() {
-	# Update mimedb for the new .desktop file
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+pkg_preinst() {
+	gnome2_icon_savelist
+}
 
+pkg_postinst() {
 	if ! has_version 'gnome-base/gconf' || ! has_version 'gnome-base/orbit' \
 		|| ! has_version 'net-misc/curl'; then
 		einfo
@@ -165,37 +166,14 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
-
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
 	use pulseaudio || ewarn "USE=-pulseaudio : audio will not play without pulseaudio installed"
 
-	local show_doh_information
-
-	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		# New install; Tell user that DoH is disabled by default
-		show_doh_information=yes
-	else
-		local replacing_version
-		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 70 ; then
-				# Tell user only once about our DoH default
-				show_doh_information=yes
-				break
-			fi
-		done
-	fi
-
-	if [[ -n "${show_doh_information}" ]] ; then
-		elog
-		elog "Note regarding Trusted Recursive Resolver aka DNS-over-HTTPS (DoH):"
-		elog "Due to privacy concerns (encrypting DNS might be a good thing, sending all"
-		elog "DNS traffic to Cloudflare by default is not a good idea and applications"
-		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
-		elog "(\"Off by choice\") by default."
-		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
-	fi
+	# Update mimedb for the new .desktop file
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
+	gnome2_icon_cache_update
 }
