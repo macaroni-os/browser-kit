@@ -1,13 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib toolchain-funcs
+EAPI=7
+inherit autotools desktop multilib toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://www.dillo.org/"
-SRC_URI="https://www.dillo.org/download/${P}.tar.bz2
-	mirror://gentoo/${PN}.png"
+SRC_URI="
+	https://www.dillo.org/download/${P}.tar.bz2
+	mirror://gentoo/${PN}.png
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,13 +26,20 @@ RDEPEND="
 		libressl? ( dev-libs/libressl )
 	)
 "
-DEPEND="
+BDEPEND="
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}2-inbuf.patch
+	"${FILESDIR}"/${PN}-3.0.5-fno-common.patch
+	"${FILESDIR}"/${PN}-3.0.5-openssl-1.1.patch
+)
+DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}2-inbuf.patch
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -54,15 +63,8 @@ src_install() {
 	dodir /etc
 	default
 
-	use doc && dohtml html/*
-	dodoc AUTHORS ChangeLog README NEWS
-	dodoc doc/*.txt doc/README
+	use doc && dodoc -r html
 
 	doicon "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} Dillo
-}
-
-pkg_postinst() {
-	elog "Dillo has installed a default configuration into /etc/dillo/dillorc"
-	elog "You can copy this to ~/.dillo/ and customize it"
 }
