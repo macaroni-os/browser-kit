@@ -4,6 +4,9 @@
 EAPI=6
 WANT_AUTOCONF="2.1"
 
+PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
+
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
 # note - could not roll langpacks for: ca fi
 #MOZ_LANGS=(ca cs de en-GB es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl pt-PT
@@ -20,96 +23,124 @@ MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
 
 if [[ ${PV} == *_pre* ]] ; then
-# the following are for upstream build candidates
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
-	MOZ_LANGPACK_PREFIX="linux-i686/xpi/"
-	SRC_URI+=" ${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz"
-	S="${WORKDIR}/${MY_MOZ_P}"
-	# And the langpack stuff stays at eclass defaults
-# the following is for self-rolled releases
-	#MOZ_HTTP_URI="https://dev.gentoo.org/~axs/distfiles"
-	#MOZ_LANGPACK_PREFIX="${MY_MOZ_P}."
-	#MOZ_LANGPACK_SUFFIX=".langpack.xpi"
-	#SRC_URI="${SRC_URI}
-	#${MOZ_HTTP_URI}/${P}.source.tar.xz
-	#"
-elif [[ ${PV} == *_p[0-9] ]]; then
-	# gentoo-unofficial release using thunderbird distfiles to build seamonkey instead
-	TB_MAJOR=52
-	SMPV="${PV%.[0-9].*}"
-	MOZ_P="${PN}-${MOZ_PV}"
-	MOZ_HTTP_URI="https://archive.mozilla.org/pub/thunderbird/releases/${MOZ_PV/${SMPV}/${TB_MAJOR}}"
-	#MOZ_GENERATE_LANGPACKS=1
-	#https://dev.gentoo.org/~axs/distfiles/${PN}-${SMPV}-l10n-sources-20170727.tar.xz
-	MOZ_LANGPACK_PREFIX="../../../seamonkey/releases/2.49.1/linux-i686/xpi/"
-	MOZ_LANGPACK_SUFFIX=".xpi"
-	S="${WORKDIR}/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}"
-	CHATZILLA_VER="SEA2_48_RELBRANCH"
-	INSPECTOR_VER="DOMI_2_0_17"
-	SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/source/thunderbird-${MOZ_PV/${SMPV}/${TB_MAJOR}}.source.tar.xz
-	https://hg.mozilla.org/chatzilla/archive/${CHATZILLA_VER}.tar.bz2 -> chatzilla-${CHATZILLA_VER}.tar.bz2
-	https://hg.mozilla.org/dom-inspector/archive/${INSPECTOR_VER}.tar.bz2 -> dom-inspector-${INSPECTOR_VER}.tar.bz2
-	"
 else
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
-	MOZ_LANGPACK_PREFIX="langpack/${MY_MOZ_P}."
-	MOZ_LANGPACK_SUFFIX=".langpack.xpi"
-	S="${WORKDIR}/${PN}-${MOZ_PV}"
-	SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
-	"
 fi
 
-MOZCONFIG_OPTIONAL_GTK3=1
-MOZCONFIG_OPTIONAL_WIFI=1
-inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.52 pax-utils xdg-utils autotools mozextension nsplugins mozlinguas-v2
+S="${WORKDIR}/${MY_MOZ_P}"
+SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
+	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz"
 
-PATCHFF="firefox-52.4-patches-02"
-PATCH="${PN}-2.46-patches-01"
+MOZ_GENERATE_LANGPACKS=1
+MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
+inherit autotools check-reqs flag-o-matic mozcoreconf-v6 mozextension mozlinguas-v2 nsplugins pax-utils toolchain-funcs xdg-utils
+
+PATCH="${PN}-2.53.1-patches-01"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
-KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+calendar +chatzilla +crypt +gmp-autoupdate +ipc jack minimal pulseaudio +roaming selinux test"
+IUSE="+calendar +chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack minimal
+neon pulseaudio +roaming selinux startup-notification system-harfbuzz system-icu
+system-jpeg system-libevent system-sqlite system-libvpx test wifi"
 RESTRICT="!test? ( test )"
 
 SRC_URI+="
-	https://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCHFF}.tar.xz
-	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
-	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz
-	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCH}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 "
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
-RDEPEND="
-	>=dev-libs/nss-3.28.3
-	>=dev-libs/nspr-4.13.1
+DEPEND="
+	>=app-text/hunspell-1.5.4:=
+	dev-libs/atk
+	>=dev-libs/glib-2.26:2
+	>=dev-libs/libffi-3.0.10:=
+	>=dev-libs/nspr-4.23
+	>=dev-libs/nss-3.47.1
+	media-libs/fontconfig
+	>=media-libs/freetype-2.4.10
+	>=media-libs/libpng-1.6.31:0=[apng]
+	>=media-libs/mesa-10.2:=
+	>=sys-libs/zlib-1.2.3
+	>=x11-libs/cairo-1.10[X]
+	x11-libs/gdk-pixbuf
+	>=x11-libs/gtk+-2.18:2
+	>=x11-libs/gtk+-3.4.0:3
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrender
+	x11-libs/libXt
+	>=x11-libs/pango-1.22.0
+	>=x11-libs/pixman-0.19.2
+	virtual/ffmpeg
+	virtual/freedesktop-icon-theme
+	dbus? (
+		>=dev-libs/dbus-glib-0.72
+		>=sys-apps/dbus-0.60
+	)
 	jack? ( virtual/jack )
 	crypt? ( <x11-plugins/enigmail-2.1.0 )
+	kernel_linux? ( !pulseaudio? ( media-libs/alsa-lib ) )
+	pulseaudio? ( || (
+		media-sound/pulseaudio
+		>=media-sound/apulse-0.1.9
+	) )
+	startup-notification? ( >=x11-libs/startup-notification-0.8 )
+	system-harfbuzz? (
+		>=media-gfx/graphite2-1.3.9-r1
+		>=media-libs/harfbuzz-1.3.3:0=
+	)
+	system-icu? ( >=dev-libs/icu-59.1:= )
+	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
+	system-libevent? ( >=dev-libs/libevent-2.0:0= )
+	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )
+	system-sqlite? ( >=dev-db/sqlite-3.19.3:3[secure-delete,debug=] )
+	wifi? (
+		kernel_linux? (
+			>=dev-libs/dbus-glib-0.72
+			net-misc/networkmanager
+			>=sys-apps/dbus-0.60
+		)
+	)
 "
-
-DEPEND="
-	${RDEPEND}
-	!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( dev-libs/libexecinfo ) ) )
-	amd64? ( ${ASM_DEPEND}
-		virtual/opengl )
-	x86? ( ${ASM_DEPEND}
-		virtual/opengl )
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-mozilla )
 "
-
-BUILD_OBJ_DIR="${S}/seamonk"
+# Convert to BDEPEND once the ebuild goes EAPI-7
+DEPEND+="
+	app-arch/unzip
+	app-arch/zip
+	dev-lang/perl
+	sys-apps/findutils
+	>=sys-devel/binutils-2.16.1
+	virtual/pkgconfig
+	>=virtual/rust-1.34.0
+	amd64? (
+		${ASM_DEPEND}
+		virtual/opengl
+	)
+	x86? (
+		${ASM_DEPEND}
+		virtual/opengl
+	)
+"
 
 # allow GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
 if [[ -z $GMP_PLUGIN_LIST ]] ; then
 	GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
 fi
+
+BUILD_OBJ_DIR="${S}/seamonk"
 
 pkg_setup() {
 	if [[ ${PV} == *_pre* ]] ; then
@@ -132,19 +163,12 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	unpack ${A}
+	local l10n_sources="${P}.source-l10n.tar.xz"
+	unpack ${A/ ${l10n_sources}}
 
-	# Unpack language packs
-	mozlinguas_src_unpack
-
-	if [[ -n $TB_MAJOR ]]; then
-		# move the irc and inspector code into the correct locations
-		# when we are building from a thunderbird tarball
-		mv "${WORKDIR}"/chatzilla-${CHATZILLA_VER} \
-			"${S}"/mozilla/extensions/irc || die
-		mv "${WORKDIR}"/dom-inspector-${INSPECTOR_VER} \
-			"${S}"/mozilla/extensions/inspector || die
-	fi
+	mkdir "${S}/${P}-l10n" || die
+	cd "${S}/${P}-l10n" || die
+	unpack ${l10n_sources}
 }
 
 src_prepare() {
@@ -153,7 +177,6 @@ src_prepare() {
 
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
-	rm -f "${WORKDIR}"/firefox/1000_gentoo_install_dir.patch
 	eapply "${WORKDIR}"/firefox
 	popd &>/dev/null || die
 
@@ -170,11 +193,6 @@ src_prepare() {
 		einfo edos2unix "${file}"
 		edos2unix "${file}"
 	done
-
-	# force a version update that matches the minor and patch version of thunderbird
-	if [[ -n ${TB_MAJOR} ]]; then
-		echo ${MOZ_PV} >"${S}"/suite/config/version.txt
-	fi
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
@@ -206,16 +224,16 @@ src_prepare() {
 
 	# Don't build libs-% locale files for chatzilla if we are not building chatzilla
 	# (this is hard-coded in the build system at present rather than being based on configuration)
-	use chatzilla || sed '/extensions\/irc\/locales libs-/s@^@#@' \
-		-i "${S}"/suite/locales/Makefile.in || die
+	if ! use chatzilla ; then
+		sed '/extensions\/irc\/locales libs-/s@^@#@' \
+			-i "${S}"/suite/locales/Makefile.in || die
+	fi
 
 	eautoreconf old-configure.in
 	cd "${S}"/mozilla || die
 	eautoconf old-configure.in
 	cd "${S}"/mozilla/js/src || die
 	eautoconf old-configure.in
-	cd "${S}"/mozilla/memory/jemalloc/src || die
-	WANT_AUTOCONF= eautoconf
 }
 
 src_configure() {
@@ -232,7 +250,118 @@ src_configure() {
 	####################################
 
 	mozconfig_init
-	mozconfig_config
+
+	##################################
+	# Former mozconfig_config() part #
+	##################################
+
+	# Migrated from mozcoreconf-2
+	mozconfig_annotate 'system_libs' --with-system-bz2
+	mozconfig_annotate 'system_libs' --with-system-zlib
+
+	# Disable for testing purposes only
+	mozconfig_annotate 'Upstream bug 1341234' --disable-stylo
+
+	# Must pass release in order to properly select linker via gold useflag
+	mozconfig_annotate 'Enable by Gentoo' --enable-release
+
+	# Must pass --enable-gold if using ld.gold
+	if tc-ld-is-gold ; then
+		mozconfig_annotate 'tc-ld-is-gold=true' --enable-gold
+	else
+		mozconfig_annotate 'tc-ld-is-gold=false' --disable-gold
+	fi
+
+	# Enable position independent executables
+	mozconfig_annotate 'enabled by Gentoo' --enable-pie
+
+	mozconfig_use_enable debug
+	mozconfig_use_enable debug tests
+	if ! use debug ; then
+		mozconfig_annotate 'disabled by Gentoo' --disable-debug-symbols
+	else
+		mozconfig_annotate 'enabled by Gentoo' --enable-debug-symbols
+	fi
+
+	mozconfig_use_enable startup-notification
+
+	# wifi pulls in dbus so manage both here
+	mozconfig_use_enable wifi necko-wifi
+	if use kernel_linux && use wifi && ! use dbus ; then
+		echo "Enabling dbus support due to wifi request"
+		mozconfig_annotate 'dbus required by necko-wifi on linux' --enable-dbus
+	else
+		mozconfig_use_enable dbus
+		mozconfig_annotate 'disabled' --disable-necko-wifi
+	fi
+
+	# These are enabled by default in all mozilla applications
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX}"/usr
+	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX}"/usr/include --x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
+	if use system-libevent ; then
+		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
+	fi
+	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
+	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate 'Gentoo default' --enable-system-hunspell
+	mozconfig_annotate '' --disable-crashreporter
+	mozconfig_annotate 'Gentoo default' --with-system-png
+	mozconfig_annotate '' --enable-system-ffi
+	mozconfig_annotate '' --disable-gconf
+	mozconfig_annotate '' --with-intl-api
+
+	# skia has no support for big-endian platforms
+	if [[ $(tc-endian) == "big" ]] ; then
+		mozconfig_annotate 'big endian target' --disable-skia
+	else
+		mozconfig_annotate '' --enable-skia
+	fi
+
+	# default toolkit is cairo-gtk3, optional use flags can change this
+	mozconfig_annotate '' --enable-default-toolkit=cairo-gtk3
+
+	# Instead of the standard --build= and --host=, mozilla uses --host instead
+	# of --build, and --target intstead of --host.
+	# Note, mozilla also has --build but it does not do what you think it does.
+	# Set both --target and --host as mozilla uses python to guess values otherwise
+	mozconfig_annotate '' --target="${CHOST}"
+	mozconfig_annotate '' --host="${CBUILD:-${CHOST}}"
+
+	mozconfig_use_enable pulseaudio
+	# force the deprecated alsa sound code if pulseaudio is disabled
+	if use kernel_linux && ! use pulseaudio ; then
+		mozconfig_annotate '-pulseaudio' --disable-pulseaudio
+		mozconfig_annotate '-pulseaudio' --enable-alsa
+	fi
+
+	# For testing purpose only
+	mozconfig_annotate 'Sandbox' --enable-content-sandbox
+
+	mozconfig_use_enable system-sqlite
+	mozconfig_use_with system-jpeg
+	mozconfig_use_with system-icu
+	mozconfig_use_with system-libvpx
+	mozconfig_use_with system-harfbuzz
+	mozconfig_use_with system-harfbuzz system-graphite2
+
+	# Modifications to better support ARM, bug 553364
+	if use neon ; then
+		mozconfig_annotate '' --with-fpu=neon
+		mozconfig_annotate '' --with-thumb=yes
+		mozconfig_annotate '' --with-thumb-interwork=no
+	fi
+	if [[ ${CHOST} == armv* ]] ; then
+		mozconfig_annotate '' --with-float-abi=hard
+		if ! use system-libvpx ; then
+			sed -i -e "s|softfp|hard|" \
+				"${S}"/mozilla/media/libvpx/moz.build \
+				|| die
+		fi
+	fi
+	##################################
+	# Former mozconfig_config() end  #
+	##################################
 
 	# enable JACK, bug 600002
 	mozconfig_use_enable jack
@@ -249,23 +378,27 @@ src_configure() {
 
 	# Setup api key for location services
 	echo -n "${_google_api_key}" > "${S}"/google-api-key
-	mozconfig_annotate '' --with-google-api-keyfile="${S}/google-api-key"
+	mozconfig_annotate '' --with-google-location-service-api-keyfile="${S}/google-api-key"
+	mozconfig_annotate '' --with-google-safebrowsing-api-keyfile="${S}/google-api-key"
 
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
 
-	# Other sm-specific settings
-	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
-	mozconfig_annotate '' --enable-safe-browsing
+	# sm-specific settings
 	mozconfig_use_enable calendar
-
-	mozlinguas_mozconfig
 
 	# Use an objdir to keep things organized.
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
 	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
 
+	mozlinguas_mozconfig
+
 	# Finalize and report settings
 	mozconfig_final
+
+	# Required until mozcoreconf-v?.eclass-es are finally fixed...
+	sed \
+		-e '/--enable-application/s@comm/suite@suite@' \
+		-i .mozconfig || die
 
 	# Work around breakage in makeopts with --no-print-directory
 	MAKEOPTS="${MAKEOPTS/--no-print-directory/}"
@@ -279,7 +412,7 @@ src_configure() {
 	fi
 
 	# workaround for funky/broken upstream configure...
-	SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
+	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake V=1 -f client.mk configure
 }
 
@@ -323,8 +456,9 @@ src_install() {
 		done
 	fi
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake DESTDIR="${D}" install
+	MOZ_P="${P/_*}" mozlinguas_src_install
 	cp "${FILESDIR}"/${PN}.desktop "${T}" || die
 
 	sed 's|^\(MimeType=.*\)$|\1text/x-vcard;text/directory;application/mbox;message/rfc822;x-scheme-handler/mailto;|' \
@@ -332,16 +466,8 @@ src_install() {
 	sed 's|^\(Categories=.*\)$|\1Email;|' -i "${T}"/${PN}.desktop \
 		|| die
 
-	# Install language packs
-	mozlinguas_src_install
-
-	# Add StartupNotify=true bug 290401
-	if use startup-notification ; then
-		echo "StartupNotify=true" >> "${T}"/${PN}.desktop || die
-	fi
-
 	# Install icon and .desktop for menu entry
-	newicon "${S}"/suite/branding/nightly/content/icon64.png ${PN}.png
+	newicon "${S}"/suite/branding/${PN}/default64.png ${PN}.png
 	domenu "${T}"/${PN}.desktop
 
 	# Required in order to use plugins and even run seamonkey on hardened.
@@ -391,7 +517,6 @@ pkg_postinst() {
 
 	# Update mimedb for the new .desktop file
 	xdg_desktop_database_update
-	#gnome2_icon_cache_update
 
 	if ! use gmp-autoupdate ; then
 		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
