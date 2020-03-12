@@ -98,6 +98,7 @@ src_prepare() {
 }
 
 src_install() {
+	rm -r usr/share/appdata || die
 	mv * "${D}" || die
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
