@@ -74,7 +74,7 @@ pkg_nofetch() {
 	eerror "Please wait 24 hours and sync your tree before reporting a bug for google-chrome fetch failures."
 }
 
-pkg_pretend() {
+retend() {
 	# Protect against people using autounmask overzealously
 	use amd64 || die "google-chrome only works on amd64"
 }
