@@ -5,7 +5,7 @@ import json
 RELEASE_CHANNEL="dev"
 PACKAGE_APPENDIX="unstable"
 
-async def generate(hub):
+async def generate(hub, **pkginfo):
 
 	json_data = await hub.pkgtools.fetch.get_page("https://omahaproxy.appspot.com/json")
 	json_dict = json.loads(json_data)
@@ -18,7 +18,7 @@ async def generate(hub):
 		cat="www-client",
 		version=version,
 		artifacts=[
-			hub.pkgtools.ebuild.Artifact(url=f'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-{PACKAGE_APPENDIX}/google-chrome-{PACKAGE_APPENDIX}_{version}-1_amd64.deb')
+			hub.pkgtools.ebuild.Artifact(hub, url=f'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-{PACKAGE_APPENDIX}/google-chrome-{PACKAGE_APPENDIX}_{version}-1_amd64.deb')
 		]
 	)
 	ebuild.push()
