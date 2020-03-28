@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools desktop xdg
+inherit autotools desktop xdg-utils
 
 DESCRIPTION="A fast and lightweight web browser running in both graphics and text mode"
 HOMEPAGE="http://links.twibright.com/"
@@ -11,17 +11,24 @@ SRC_URI="http://${PN}.twibright.com/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 fbcon gpm ipv6 jpeg libevent libressl livecd lzma ssl suid svga tiff unicode X zlib"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="brotli bzip2 fbcon freetype gpm ipv6 jpeg libevent libressl livecd lzip lzma ssl suid svga tiff unicode X zlib zstd"
 
 GRAPHICS_DEPEND="media-libs/libpng:0="
 
 RDEPEND="
+	brotli? (
+		app-arch/brotli
+	)
 	bzip2? (
 		app-arch/bzip2
 	)
 	fbcon? (
 		${GRAPHICS_DEPEND}
+	)
+	freetype? (
+		media-libs/fontconfig
+		media-libs/freetype
 	)
 	gpm? (
 		sys-libs/gpm
@@ -36,6 +43,9 @@ RDEPEND="
 		${GRAPHICS_DEPEND}
 		sys-libs/gpm
 		virtual/jpeg:0
+	)
+	lzip? (
+		app-arch/lzip
 	)
 	lzma? (
 		app-arch/xz-utils
@@ -57,12 +67,16 @@ RDEPEND="
 	)
 	zlib? (
 		sys-libs/zlib
+	)
+	zstd? (
+		app-arch/zstd
 	)"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	fbcon? ( virtual/os-headers )
-	livecd? ( virtual/os-headers )"
+	livecd? ( virtual/os-headers )
+	X? ( dev-util/desktop-file-utils )"
 
 REQUIRED_USE="!livecd? ( fbcon? ( gpm ) )
 	svga? ( suid )"
@@ -70,7 +84,7 @@ REQUIRED_USE="!livecd? ( fbcon? ( gpm ) )
 DOCS=( AUTHORS BRAILLE_HOWTO ChangeLog KEYS NEWS README SITES )
 
 src_prepare() {
-	xdg_src_prepare
+	use X && xdg_environment_reset
 
 	if use unicode; then
 		pushd intl > /dev/null || die
@@ -88,6 +102,8 @@ src_prepare() {
 	# Upstream configure produced by broken autoconf-2.13. This also fixes
 	# toolchain detection.
 	mv configure.in configure.ac || die
+
+	default
 	eautoreconf #131440 and #103483#c23
 }
 
@@ -107,17 +123,22 @@ src_configure() {
 
 	econf \
 		--without-directfb \
-		$(use_with ipv6) \
-		$(use_with ssl) \
-		$(use_with zlib) \
+		--without-librsvg \
+		$(use_with brotli) \
 		$(use_with bzip2) \
-		$(use_with lzma) \
-		$(use_with svga svgalib) \
-		$(use_with X x) \
 		$(use_with fbcon fb) \
-		$(use_with libevent) \
+		$(use_with freetype) \
+		$(use_with ipv6) \
 		$(use_with jpeg libjpeg) \
+		$(use_with libevent) \
+		$(use_with lzip) \
+		$(use_with lzma) \
+		$(use_with ssl) \
+		$(use_with svga svgalib) \
 		$(use_with tiff libtiff) \
+		$(use_with X x) \
+		$(use_with zlib) \
+		$(use_with zstd) \
 		${myconf}
 }
 
@@ -139,14 +160,10 @@ src_install() {
 	use suid && fperms 4755 /usr/bin/links
 }
 
-pkg_preinst() {
-	use X && xdg_pkg_preinst
-}
-
 pkg_postinst() {
-	use X && xdg_pkg_postinst
+	use X && xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	use X && xdg_pkg_postrm
+	use X && xdg_desktop_database_update
 }
