@@ -19,20 +19,17 @@ DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
-	arm64? ( ${VIVALDI_BASE_URI}arm64.deb -> ${P}-arm64.deb )
-	arm? ( ${VIVALDI_BASE_URI}armhf.deb -> ${P}-armhf.deb )
-	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
+	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.49-1_amd64.deb -> vivaldi-2.11.1811.49-1-amd64.deb )
+	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.49-1_arm64.deb -> vivaldi-2.11.1811.49-1-arm64.deb )
+	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.49-1_armhf.deb -> vivaldi-2.11.1811.49-1-armhf.deb )
+	x86? ( https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1811.49-1_i386.deb -> vivaldi-2.11.1811.49-1-i386.deb )
 "
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64 ~arm ~arm64 x86"
-RESTRICT="bindist mirror"
+KEYWORDS="-* amd64 arm arm64 x86"
 
-DEPEND="
-	virtual/libiconv
-"
+DEPEND="virtual/libiconv"
 RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
