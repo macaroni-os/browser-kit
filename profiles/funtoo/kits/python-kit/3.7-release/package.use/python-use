@@ -1,4 +1,7 @@
-dev-lang/spidermonkey python_single_target_python2_7
+=dev-lang/spidermonkey-1.8.5-r6 python_single_target_python2_7
+=dev-lang/spidermonkey-1.8.5-r7 python_single_target_python2_7
+=dev-lang/spidermonkey-1.8.5-r9 python_single_target_python2_7
+=dev-lang/spidermonkey-17.0.0-r5 python_single_target_python2_7
 www-client/chromium python_single_target_python2_7
 www-client/elinks python_single_target_python2_7
 www-client/ripe-atlas-cousteau python_single_target_python3_6 python_targets_python3_6
