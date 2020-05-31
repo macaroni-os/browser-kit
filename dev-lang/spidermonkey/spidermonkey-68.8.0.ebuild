@@ -1,9 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3+ )
 
 WANT_AUTOCONF="2.1"
 
@@ -27,8 +26,8 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-FIREFOX_PATCHSET="firefox-68.0-patches-12"
-SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-02"
+FIREFOX_PATCHSET="firefox-68.0-patches-14"
+SPIDERMONKEY_PATCHSET="${PN}-68.6.0-patches-03"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/firefox/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -49,7 +48,7 @@ SRC_URI="${MOZ_SRC_URI}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 
-KEYWORDS=""
+KEYWORDS="*"
 
 SLOT="68"
 LICENSE="MPL-2.0"
