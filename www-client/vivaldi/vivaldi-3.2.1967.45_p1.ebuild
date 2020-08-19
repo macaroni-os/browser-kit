@@ -19,10 +19,10 @@ DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.41-1_amd64.deb -> vivaldi-3.2.1967.41_p1-amd64.deb )
-	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.41-1_arm64.deb -> vivaldi-3.2.1967.41_p1-arm64.deb )
-	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.41-1_armhf.deb -> vivaldi-3.2.1967.41_p1-armhf.deb )
-	x86? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.41-1_i386.deb -> vivaldi-3.2.1967.41_p1-i386.deb )
+	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.45-1_amd64.deb -> vivaldi-3.2.1967.45_p1-amd64.deb )
+	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.45-1_arm64.deb -> vivaldi-3.2.1967.45_p1-arm64.deb )
+	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.45-1_armhf.deb -> vivaldi-3.2.1967.45_p1-armhf.deb )
+	x86? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.2.1967.45-1_i386.deb -> vivaldi-3.2.1967.45_p1-i386.deb )
 "
 
 LICENSE="Vivaldi"
