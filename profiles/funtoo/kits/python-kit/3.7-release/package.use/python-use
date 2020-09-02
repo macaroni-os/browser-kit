@@ -3,5 +3,4 @@
 =dev-lang/spidermonkey-1.8.5-r9 python_single_target_python2_7
 =dev-lang/spidermonkey-17.0.0-r5 python_single_target_python2_7
 www-client/chromium python_single_target_python2_7
-www-client/elinks python_single_target_python2_7
 www-client/weboob python_single_target_python2_7
