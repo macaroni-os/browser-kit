@@ -10,4 +10,4 @@ REQUIRED_USE=python_targets_python3_7 || ( chrome chromium firefox vivaldi )
 SLOT=0
 SRC_URI=https://github.com/passff/passff-host/releases/download/1.2.1/passff.py -> passff-host-1.2.1.py https://github.com/passff/passff-host/releases/download/1.2.1/passff.json -> passff-host-1.2.1.json
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	d93acbd6ef50348b41ff4ead9a020a16	python-utils-r1	8914c9c220fed51dbc06d700c5ce75bc	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=c0482ad6d2a9ab3e3c2660d8a878d62d
+_md5_=401874a32e3241279f14da19d664e172
