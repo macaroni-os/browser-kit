@@ -2,12 +2,12 @@ DEFINED_PHASES=install prepare setup unpack
 DESCRIPTION=Host app for the PassFF WebExtension
 EAPI=7
 HOMEPAGE=https://github.com/passff/passff-host
-IUSE=chrome chromium firefox vivaldi python_targets_python3_7 python_targets_python3_9 python_targets_python3_8
+IUSE=chrome chromium firefox vivaldi python_single_target_python3_7 python_single_target_python3_9 python_single_target_python3_8 python_targets_python3_7 python_targets_python3_9 python_targets_python3_8
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_9 python_single_target_python3_8 ) || ( chrome chromium firefox vivaldi )
 SLOT=0
 SRC_URI=https://github.com/passff/passff-host/releases/download/1.2.1/passff.py -> passff-host-1.2.1.py https://github.com/passff/passff-host/releases/download/1.2.1/passff.json -> passff-host-1.2.1.json
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	a811e2c445a5fb40db1a1eba728dca7f	python-utils-r1	263e4bbfa6a84be6dc6272a6702aedca	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	ce99dfba1cad0514af51a32b2b6964af	python-utils-r1	263e4bbfa6a84be6dc6272a6702aedca	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=401874a32e3241279f14da19d664e172
