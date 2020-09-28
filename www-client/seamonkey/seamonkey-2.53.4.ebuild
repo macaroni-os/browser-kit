@@ -60,8 +60,8 @@ DEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.26:2
 	>=dev-libs/libffi-3.0.10:=
-	>=dev-libs/nspr-4.23
-	>=dev-libs/nss-3.47.1
+	>=dev-libs/nspr-4.25
+	>=dev-libs/nss-3.53.1
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	>=media-libs/libpng-1.6.31:0=[apng]
