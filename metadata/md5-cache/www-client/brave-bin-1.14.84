@@ -10,4 +10,4 @@ RDEPEND=gnome-base/gconf:2 dev-libs/libpthread-stubs x11-libs/libxcb x11-libs/li
 SLOT=0
 SRC_URI=https://github.com/brave/brave-browser/releases/download/v1.14.84/brave-v1.14.84-linux-x64.zip
 _eclasses_=chromium-2	92ff174aa2b13d6ea0c4539533f0b2de	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=816757bcb48333ce2f1e2413f88a73a9
+_md5_=89747b0d79d7f849e767c8a76ebf0907
