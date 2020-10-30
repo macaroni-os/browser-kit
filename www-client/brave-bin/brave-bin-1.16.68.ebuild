@@ -15,7 +15,7 @@ inherit chromium-2 xdg-utils desktop
 
 DESCRIPTION="Brave Web Browser"
 HOMEPAGE="https://brave.com"
-SRC_URI="https://github.com/brave/brave-browser/releases/download/v1.15.76/brave-browser-1.15.76-linux-amd64.zip"
+SRC_URI="https://github.com/brave/brave-browser/releases/download/v1.16.68/brave-browser-1.16.68-linux-amd64.zip"
 
 LICENSE="MPL-2.0"
 SLOT="0"
