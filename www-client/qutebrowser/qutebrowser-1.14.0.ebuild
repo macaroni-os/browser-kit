@@ -1,26 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3+ )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit desktop distutils-r1 optfeature xdg-utils
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+inherit desktop distutils-r1 eutils xdg-utils
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
+SRC_URI="https://api.github.com/repos/qutebrowser/qutebrowser/tarball/v1.14.0 -> qutebrowser-1.14.0.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="*"
 IUSE="scripts test"
 
 BDEPEND="
@@ -31,7 +24,7 @@ RDEPEND="
 	dev-python/cssutils[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.6.1[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.7.1[${PYTHON_USEDEP}]
 	dev-python/pypeg2[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
@@ -44,6 +37,11 @@ distutils_enable_tests setup.py
 # isn't complete and X11 is required in order to start up qutebrowser.
 RESTRICT="test"
 
+src_unpack() {
+	unpack ${A}
+	mv "${WORKDIR}"/qutebrowser-qutebrowser-* "${S}" || die
+}
+
 python_compile_all() {
 	a2x -f manpage doc/${PN}.1.asciidoc || die "Failed generating man page"
 }
@@ -54,14 +52,28 @@ python_install_all() {
 	doicon -s scalable icons/${PN}.svg
 
 	if use scripts; then
-		# Install only those userscripts that have an explicit license header
+		insinto /usr/share/qutebrowser/userscripts/
+		doins misc/userscripts/README.md
 		exeinto /usr/share/qutebrowser/userscripts/
-		doexe misc/userscripts/dmenu_qutebrowser
-		doexe misc/userscripts/openfeeds
-		doexe misc/userscripts/qute-keepass
-		doexe misc/userscripts/qute-pass
-		doexe misc/userscripts/rss
-		doexe misc/userscripts/tor_identity
+		doexe misc/userscripts/cast \
+		      misc/userscripts/dmenu_qutebrowser \
+		      misc/userscripts/format_json \
+		      misc/userscripts/getbib \
+		      misc/userscripts/open_download \
+		      misc/userscripts/openfeeds \
+		      misc/userscripts/password_fill \
+		      misc/userscripts/qute-bitwarden \
+		      misc/userscripts/qutedmenu \
+		      misc/userscripts/qute-keepass \
+		      misc/userscripts/qute-lastpass \
+		      misc/userscripts/qute-pass \
+		      misc/userscripts/readability \
+		      misc/userscripts/readability-js \
+		      misc/userscripts/ripbang \
+		      misc/userscripts/rss \
+		      misc/userscripts/taskadd \
+		      misc/userscripts/tor_identity \
+		      misc/userscripts/view_in_mpv
 	fi
 
 	distutils-r1_python_install_all
