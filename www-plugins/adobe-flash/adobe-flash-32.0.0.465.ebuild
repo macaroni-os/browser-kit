@@ -16,8 +16,8 @@ REQUIRED_USE="
 "
 
 SRC_URI="
-	nsplugin? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.453/flash_player_npapi_linux.x86_64.tar.gz -> adobe-flash-32.0.0.453-npapi.x86_64.tar.gz )
-	ppapi? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.453/flash_player_ppapi_linux.x86_64.tar.gz -> adobe-flash-32.0.0.453-ppapi.x86_64.tar.gz )
+	nsplugin? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.465/flash_player_npapi_linux.x86_64.tar.gz -> adobe-flash-32.0.0.465-npapi.x86_64.tar.gz )
+	ppapi? ( https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.465/flash_player_ppapi_linux.x86_64.tar.gz -> adobe-flash-32.0.0.465-ppapi.x86_64.tar.gz )
 "
 SLOT="22"
 
