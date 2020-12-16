@@ -33,21 +33,13 @@ if [[ ${EUID} == 0 && -O ${XDG_CONFIG_HOME:-${HOME}} ]]; then
 		${CHROMIUM_FLAGS}"
 fi
 
-# Select session type
-if @@OZONE_AUTO_SESSION@@; then
-	platform=
-	if [[ ${XDG_SESSION_TYPE} == x11 ]]; then
-		platform=x11
-	elif [[ ${XDG_SESSION_TYPE} == wayland ]]; then
-		platform=wayland
-	else
-		if [[ -n ${WAYLAND_DISPLAY} ]]; then
-			platform=wayland
-		else
-			platform=x11
-		fi
+# Select session type and platform
+if @@FORCE_OZONE_PLATFORM@@; then
+	CHROMIUM_FLAGS="--enable-features=UseOzonePlatform ${CHROMIUM_FLAGS}"
+elif @@OZONE_AUTO_SESSION@@ && ! ${DISABLE_OZONE_PLATFORM:-false}; then
+	if [[ ${XDG_SESSION_TYPE} == wayland || -n ${WAYLAND_DISPLAY} && ${XDG_SESSION_TYPE} != x11 ]]; then
+		CHROMIUM_FLAGS="--enable-features=UseOzonePlatform ${CHROMIUM_FLAGS}"
 	fi
-	CHROMIUM_FLAGS="--ozone-platform=${platform} ${CHROMIUM_FLAGS}"
 fi
 
 # Set the .desktop file name
