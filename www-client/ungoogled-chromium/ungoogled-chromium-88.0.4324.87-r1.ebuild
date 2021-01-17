@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6..9}} )
+PYTHON_COMPAT=( python{2_7,3_{7..9}} )
 PYTHON_REQ_USE="xml"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
@@ -11,15 +11,15 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 
 inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-utils portability python-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
-UGC_PV="${PV/_p/-}"
-UGC_P="${PN}-${UGC_PV}"
+UGC_PVR="${PVR/r}"
+UGC_PF="${PN}-${UGC_PVR}"
 UGC_URL="https://github.com/Eloston/${PN}/archive/"
-#UGC_COMMIT_ID="b78cb927fa8beaee0ddfb4385277edb96444c40f"
+UGC_COMMIT_ID="7e461baed32be6d8508f6fded8d1a7784feeb1be"
 
 if [ -z "$UGC_COMMIT_ID" ]
 then
-	UGC_URL="${UGC_URL}${UGC_PV}.tar.gz -> ${UGC_P}.tar.gz"
-	UGC_WD="${WORKDIR}/${UGC_P}"
+	UGC_URL="${UGC_URL}${UGC_PVR}.tar.gz -> ${UGC_PF}.tar.gz"
+	UGC_WD="${WORKDIR}/${UGC_PF}"
 else
 	UGC_URL="${UGC_URL}${UGC_COMMIT_ID}.tar.gz -> ${PN}-${UGC_COMMIT_ID}.tar.gz"
 	UGC_WD="${WORKDIR}/ungoogled-chromium-${UGC_COMMIT_ID}"
@@ -27,16 +27,16 @@ fi
 
 DESCRIPTION="Modifications to Chromium for removing Google integration and enhancing privacy"
 HOMEPAGE="https://github.com/Eloston/ungoogled-chromium"
-PATCHSET="9"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
-SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${PV/_*}.tar.xz
+SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${PV}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
 	${UGC_URL}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+# KEYWORDS="~amd64 ~x86"
 IUSE="cfi +clang closure-compile convert-dict cups custom-cflags enable-driver hangouts headless kerberos +official optimize-thinlto optimize-webui pgo +proprietary-codecs pulseaudio selinux suid +system-ffmpeg +system-harfbuzz +system-icu +system-jsoncpp +system-libevent +system-libvpx +system-openh264 system-openjpeg +system-re2 +tcmalloc thinlto vaapi vdpau wayland widevine"
 RESTRICT="
 	!system-ffmpeg? ( proprietary-codecs? ( bindist ) )
@@ -141,7 +141,7 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/ttf-fonts
 	selinux? ( sec-policy/selinux-chromium )
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
-	!x86? ( widevine? ( ~www-plugins/chrome-binary-plugins-${PV/_*} ) )
+	!x86? ( widevine? ( ~www-plugins/chrome-binary-plugins-${PV} ) )
 	!www-client/chromium
 	!www-client/chromium-bin
 	!www-client/ungoogled-chromium-bin
@@ -203,7 +203,7 @@ them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
 
-S="${WORKDIR}/chromium-${PV/_*}"
+S="${WORKDIR}/chromium-${PV}"
 
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -268,19 +268,15 @@ src_prepare() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup 'python3*'
 
+	rm "${WORKDIR}/patches/chromium-84-blink-disable-clang-format.patch" || die
+
 	use custom-cflags || rm "${WORKDIR}/patches/chromium-$(ver_cut 1)-compiler.patch" || die
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
-		"${FILESDIR}/chromium-87-ozone-deps.patch"
+		"${FILESDIR}/chromium-88-ozone-deps.patch"
 		"${FILESDIR}/chromium-87-webcodecs-deps.patch"
-		"${FILESDIR}/chromium-87-v8-icu68.patch"
-		"${FILESDIR}/chromium-87-icu68.patch"
 	)
-
-	if use vaapi; then
-		PATCHES+=( "${FILESDIR}/chromium-86-fix-vaapi-on-intel.patch" )
-	fi
 
 	default
 
@@ -407,6 +403,7 @@ src_prepare() {
 		third_party/cros_system_api
 		third_party/dav1d
 		third_party/dawn
+		third_party/dawn/third_party/khronos
 		third_party/depot_tools
 		third_party/devscripts
 		third_party/devtools-frontend
@@ -433,6 +430,7 @@ src_prepare() {
 		third_party/harfbuzz-ng
 	)
 	keeplibs+=(
+		third_party/fusejs
 		third_party/libgifcodec
 		third_party/glslang
 		third_party/google_input_tools
@@ -471,6 +469,8 @@ src_prepare() {
 	)
 	keeplibs+=(
 		third_party/libwebm
+		third_party/libx11
+		third_party/libxcb-keysyms
 		third_party/libxml/chromium
 		third_party/libyuv
 		third_party/llvm
@@ -534,6 +534,7 @@ src_prepare() {
 		third_party/skia/third_party/skcms
 		third_party/skia/third_party/vulkan
 		third_party/smhasher
+		third_party/spirv-cross/spirv-cross
 		third_party/spirv-headers
 		third_party/SPIRV-Tools
 		third_party/sqlite
@@ -543,6 +544,7 @@ src_prepare() {
 		third_party/swiftshader/third_party/marl
 		third_party/swiftshader/third_party/subzero
 		third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
+		third_party/tint
 		third_party/ukey2
 		third_party/usrsctp
 		third_party/vulkan
@@ -559,6 +561,7 @@ src_prepare() {
 		third_party/widevine
 		third_party/woff2
 		third_party/wuffs
+		third_party/x11proto
 		third_party/xcbproto
 		third_party/zxcvbn-cpp
 		third_party/zlib/google
@@ -973,9 +976,6 @@ src_install() {
 
 	use enable-driver && doexe out/Release/chromedriver
 
-	ozone_auto_session () {
-		use ozone && use ozone-wayland && ! use headless && echo true || echo false
-	}
 	local sedargs=( -e
 			"s:/usr/lib/:/usr/$(get_libdir)/:g;
 			s:@@OZONE_AUTO_SESSION@@:$(usex wayland true false):g;
