@@ -129,7 +129,7 @@ syn-1.0.60
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
-thread_local-1.1.2
+thread_local-1.1.3
 time-0.1.43
 tinyvec-1.1.1
 tinyvec_macros-0.1.0
