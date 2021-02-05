@@ -55,7 +55,7 @@ http-0.2.3
 http-body-0.3.1
 httparse-1.3.5
 httpdate-0.3.2
-hyper-0.13.9
+hyper-0.13.10
 idna-0.2.1
 indexmap-1.6.1
 iovec-0.1.4
@@ -117,7 +117,7 @@ semver-0.9.0
 semver-parser-0.7.0
 serde-1.0.123
 serde_derive-1.0.123
-serde_json-1.0.61
+serde_json-1.0.62
 serde_repr-0.1.6
 serde_urlencoded-0.6.1
 serde_yaml-0.8.16
