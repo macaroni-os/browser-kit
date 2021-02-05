@@ -56,7 +56,7 @@ http-body-0.3.1
 httparse-1.3.5
 httpdate-0.3.2
 hyper-0.13.9
-idna-0.2.0
+idna-0.2.1
 indexmap-1.6.1
 iovec-0.1.4
 itoa-0.4.7
@@ -136,7 +136,7 @@ tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
 tower-service-0.3.1
-tracing-0.1.22
+tracing-0.1.23
 tracing-core-0.1.17
 tracing-futures-0.2.4
 try-lock-0.2.3
