@@ -14,7 +14,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 UGC_PVR="${PVR/r}"
 UGC_PF="${PN}-${UGC_PVR}"
 UGC_URL="https://github.com/Eloston/${PN}/archive/"
-UGC_COMMIT_ID="362ec8584e373b798f9e3e45f4791b2dae2d0ee3"
+UGC_COMMIT_ID="f7c33ded1674556b6e9e72d597c706666f490da8"
 
 if [ -z "$UGC_COMMIT_ID" ]
 then
@@ -36,7 +36,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/chro
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cfi +clang closure-compile convert-dict cups custom-cflags enable-driver hangouts headless kerberos +official optimize-thinlto optimize-webui pgo +proprietary-codecs pulseaudio selinux suid +system-ffmpeg +system-harfbuzz +system-icu +system-jsoncpp +system-libevent system-libvpx +system-openh264 system-openjpeg +system-re2 +tcmalloc thinlto vaapi vdpau wayland widevine"
 RESTRICT="
 	!system-ffmpeg? ( proprietary-codecs? ( bindist ) )
@@ -139,7 +139,6 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/ttf-fonts
 	selinux? ( sec-policy/selinux-chromium )
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
-	!x86? ( widevine? ( ~www-plugins/chrome-binary-plugins-${PV} ) )
 	!www-client/chromium
 	!www-client/chromium-bin
 	!www-client/ungoogled-chromium-bin
@@ -224,6 +223,13 @@ pkg_pretend() {
 	if use custom-cflags && [[ "${MERGE_TYPE}" != binary ]]; then
 		ewarn
 		ewarn "USE=custom-cflags bypasses strip-flags"
+		ewarn "Consider disabling this USE flag if something breaks"
+		ewarn
+	fi
+	if use system-libvpx; then
+		ewarn
+		ewarn "Chromium is notorious of relying upon the newest libvpx"
+		ewarn "that is absent from Gentoo, which might result in build failure"
 		ewarn "Consider disabling this USE flag if something breaks"
 		ewarn
 	fi
@@ -1062,5 +1068,10 @@ pkg_postinst() {
 		elog "by navigating to chrome://flags/#enable-accelerated-video-decode"
 		elog "inside Chromium or add --enable-accelerated-video-decode"
 		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+	fi
+
+	if use widevine; then
+		elog "widevine requires binary plugins, which are distributed separately"
+		elog "Make sure you have www-plugins/chrome-binary-plugins installed"
 	fi
 }

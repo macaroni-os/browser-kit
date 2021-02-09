@@ -62,7 +62,7 @@ iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.85
+libc-0.2.86
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -143,7 +143,7 @@ try-lock-0.2.3
 typenum-1.12.0
 unicase-2.6.0
 unicode-bidi-0.3.4
-unicode-normalization-0.1.16
+unicode-normalization-0.1.17
 unicode-segmentation-1.7.1
 unicode-width-0.1.8
 unicode-xid-0.2.1
