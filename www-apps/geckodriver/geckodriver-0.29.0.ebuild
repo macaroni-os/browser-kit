@@ -98,7 +98,7 @@ proc-macro2-1.0.24
 quote-1.0.9
 rand-0.8.3
 rand_chacha-0.3.0
-rand_core-0.6.1
+rand_core-0.6.2
 rand_hc-0.3.0
 redox_syscall-0.1.57
 redox_syscall-0.2.4
