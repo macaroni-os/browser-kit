@@ -137,7 +137,7 @@ tokio-util-0.3.1
 tower-service-0.3.1
 tracing-0.1.23
 tracing-core-0.1.17
-tracing-futures-0.2.4
+tracing-futures-0.2.5
 try-lock-0.2.3
 typenum-1.12.0
 unicase-2.6.0
