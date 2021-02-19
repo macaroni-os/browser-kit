@@ -146,7 +146,7 @@ unicode-normalization-0.1.17
 unicode-segmentation-1.7.1
 unicode-width-0.1.8
 unicode-xid-0.2.1
-url-2.2.0
+url-2.2.1
 urlencoding-1.1.1
 uuid-0.8.2
 version_check-0.9.2
