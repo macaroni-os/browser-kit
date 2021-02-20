@@ -19,6 +19,7 @@ byte-tools-0.3.1
 byteorder-1.4.2
 bytes-0.5.6
 bytes-1.0.1
+cc-1.0.67
 cfg-if-0.1.10
 cfg-if-1.0.0
 chrono-0.4.19
@@ -26,7 +27,7 @@ clap-2.33.3
 constant_time_eq-0.1.5
 cookie-0.12.0
 crc32fast-1.2.1
-crossbeam-utils-0.8.1
+crossbeam-utils-0.8.2
 digest-0.8.1
 dirs-2.0.2
 dirs-sys-0.3.5
@@ -44,6 +45,7 @@ futures-io-0.3.12
 futures-sink-0.3.12
 futures-task-0.3.12
 futures-util-0.3.12
+generator-0.6.23
 generic-array-0.12.3
 getrandom-0.1.16
 getrandom-0.2.2
@@ -66,6 +68,7 @@ libc-0.2.86
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
+loom-0.4.0
 matches-0.1.8
 memchr-2.3.4
 mime-0.3.16
@@ -108,6 +111,7 @@ regex-syntax-0.6.22
 remove_dir_all-0.5.3
 rust-argon2-0.8.3
 rust-ini-0.10.3
+rustc_version-0.2.3
 ryu-1.0.5
 safemem-0.3.3
 same-file-1.0.6
