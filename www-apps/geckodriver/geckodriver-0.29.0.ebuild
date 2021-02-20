@@ -34,7 +34,7 @@ dtoa-0.4.7
 fake-simd-0.1.2
 flate2-1.0.20
 fnv-1.0.7
-form_urlencoded-1.0.0
+form_urlencoded-1.0.1
 fuchsia-zircon-0.3.3
 fuchsia-zircon-sys-0.3.3
 futures-0.3.12
