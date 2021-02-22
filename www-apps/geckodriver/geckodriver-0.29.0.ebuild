@@ -45,7 +45,7 @@ futures-io-0.3.12
 futures-sink-0.3.12
 futures-task-0.3.12
 futures-util-0.3.12
-generator-0.6.23
+generator-0.6.24
 generic-array-0.12.3
 getrandom-0.1.16
 getrandom-0.2.2
@@ -111,7 +111,7 @@ regex-syntax-0.6.22
 remove_dir_all-0.5.3
 rust-argon2-0.8.3
 rust-ini-0.10.3
-rustc_version-0.2.3
+rustversion-1.0.4
 ryu-1.0.5
 safemem-0.3.3
 same-file-1.0.6
