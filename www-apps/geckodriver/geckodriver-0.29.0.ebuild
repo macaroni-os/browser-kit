@@ -139,7 +139,7 @@ tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
 tower-service-0.3.1
-tracing-0.1.24
+tracing-0.1.25
 tracing-core-0.1.17
 tracing-futures-0.2.5
 try-lock-0.2.3
