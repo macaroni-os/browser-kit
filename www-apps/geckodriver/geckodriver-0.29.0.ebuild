@@ -3,7 +3,7 @@
 EAPI=7
 
 CRATES="
-adler-1.0.1
+adler-1.0.2
 aho-corasick-0.7.15
 arrayref-0.3.6
 arrayvec-0.5.2
