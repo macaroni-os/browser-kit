@@ -44,7 +44,7 @@ futures-io-0.3.13
 futures-sink-0.3.13
 futures-task-0.3.13
 futures-util-0.3.13
-generic-array-0.12.3
+generic-array-0.12.4
 getrandom-0.1.16
 getrandom-0.2.2
 h2-0.2.7
@@ -81,14 +81,14 @@ msdos_time-0.1.6
 net2-0.2.37
 num-integer-0.1.44
 num-traits-0.2.14
-once_cell-1.7.1
+once_cell-1.7.2
 opaque-debug-0.2.3
 percent-encoding-2.1.0
 pin-project-0.4.27
 pin-project-1.0.5
 pin-project-internal-0.4.27
 pin-project-internal-1.0.5
-pin-project-lite-0.1.11
+pin-project-lite-0.1.12
 pin-project-lite-0.2.5
 pin-utils-0.1.0
 plist-0.5.5
