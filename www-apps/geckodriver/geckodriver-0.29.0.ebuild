@@ -62,7 +62,7 @@ iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.86
+libc-0.2.87
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -81,7 +81,7 @@ msdos_time-0.1.6
 net2-0.2.37
 num-integer-0.1.44
 num-traits-0.2.14
-once_cell-1.7.0
+once_cell-1.7.1
 opaque-debug-0.2.3
 percent-encoding-2.1.0
 pin-project-0.4.27
@@ -89,7 +89,7 @@ pin-project-1.0.5
 pin-project-internal-0.4.27
 pin-project-internal-1.0.5
 pin-project-lite-0.1.11
-pin-project-lite-0.2.4
+pin-project-lite-0.2.5
 pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
