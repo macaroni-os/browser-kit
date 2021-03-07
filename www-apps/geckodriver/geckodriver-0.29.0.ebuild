@@ -55,12 +55,12 @@ httparse-1.3.5
 httpdate-0.3.2
 hyper-0.13.10
 idna-0.2.2
-indexmap-1.6.1
+indexmap-1.6.2
 iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.87
+libc-0.2.88
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -112,8 +112,8 @@ same-file-1.0.6
 scoped-tls-1.0.0
 semver-0.9.0
 semver-parser-0.7.0
-serde-1.0.123
-serde_derive-1.0.123
+serde-1.0.124
+serde_derive-1.0.124
 serde_json-1.0.64
 serde_repr-0.1.6
 serde_urlencoded-0.6.1
@@ -122,7 +122,7 @@ sha-1-0.9.4
 slab-0.4.2
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.60
+syn-1.0.62
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
