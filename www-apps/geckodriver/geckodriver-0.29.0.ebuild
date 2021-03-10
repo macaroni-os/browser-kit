@@ -14,7 +14,7 @@ base64-0.13.0
 bitflags-1.2.1
 blake2b_simd-0.5.11
 block-buffer-0.9.0
-byteorder-1.4.2
+byteorder-1.4.3
 bytes-0.5.6
 bytes-1.0.1
 cfg-if-0.1.10
