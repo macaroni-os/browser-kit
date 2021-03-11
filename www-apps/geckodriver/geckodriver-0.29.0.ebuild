@@ -171,7 +171,7 @@ inherit cargo
 
 DESCRIPTION="Proxy for using WebDriver clients to interact with Gecko-based browsers."
 HOMEPAGE="https://hg.mozilla.org/mozilla-central/file/tip/testing/geckodriver"
-SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.29.0 -> geckodriver-v0.29.0.tar.gz
+SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.29.0 -> geckodriver-0.29.0.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MPL-2.0"
