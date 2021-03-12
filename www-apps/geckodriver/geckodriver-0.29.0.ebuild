@@ -101,8 +101,8 @@ rand_hc-0.3.0
 redox_syscall-0.1.57
 redox_syscall-0.2.5
 redox_users-0.3.5
-regex-1.4.3
-regex-syntax-0.6.22
+regex-1.4.4
+regex-syntax-0.6.23
 remove_dir_all-0.5.3
 rust-argon2-0.8.3
 rust-ini-0.10.3
@@ -126,7 +126,6 @@ syn-1.0.63
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
-thread_local-1.1.3
 time-0.1.43
 tinyvec-1.1.1
 tinyvec_macros-0.1.0
