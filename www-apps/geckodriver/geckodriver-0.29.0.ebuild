@@ -60,7 +60,7 @@ iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.88
+libc-0.2.89
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -146,7 +146,7 @@ unicode-xid-0.2.1
 url-2.2.1
 urlencoding-1.1.1
 uuid-0.8.2
-version_check-0.9.2
+version_check-0.9.3
 walkdir-2.3.1
 want-0.3.0
 warp-0.2.5
