@@ -147,7 +147,7 @@ url-2.2.1
 urlencoding-1.1.1
 uuid-0.8.2
 version_check-0.9.3
-walkdir-2.3.1
+walkdir-2.3.2
 want-0.3.0
 warp-0.2.5
 wasi-0.9.0+wasi-snapshot-preview1
