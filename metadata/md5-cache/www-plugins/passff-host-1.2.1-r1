@@ -9,5 +9,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_9 python_single_target_python3_8 ) || ( chrome chromium firefox vivaldi )
 SLOT=0
 SRC_URI=https://github.com/passff/passff-host/releases/download/1.2.1/passff.py -> passff-host-1.2.1.py https://github.com/passff/passff-host/releases/download/1.2.1/passff.json -> passff-host-1.2.1.json
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	ce99dfba1cad0514af51a32b2b6964af	python-utils-r1	263e4bbfa6a84be6dc6272a6702aedca	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	ce99dfba1cad0514af51a32b2b6964af	python-utils-r1	263e4bbfa6a84be6dc6272a6702aedca	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=401874a32e3241279f14da19d664e172
