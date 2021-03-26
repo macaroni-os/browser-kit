@@ -122,7 +122,7 @@ sha-1-0.9.4
 slab-0.4.2
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.64
+syn-1.0.65
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
