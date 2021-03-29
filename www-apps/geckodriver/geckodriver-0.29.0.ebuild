@@ -29,7 +29,7 @@ crossbeam-utils-0.8.3
 digest-0.9.0
 dirs-2.0.2
 dirs-sys-0.3.5
-dtoa-0.4.7
+dtoa-0.4.8
 flate2-1.0.20
 fnv-1.0.7
 form_urlencoded-1.0.1
@@ -122,7 +122,7 @@ sha-1-0.9.4
 slab-0.4.2
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.65
+syn-1.0.67
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
