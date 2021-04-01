@@ -9,7 +9,7 @@ inherit desktop distutils-r1 eutils xdg-utils
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine"
 HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowser"
-SRC_URI="https://api.github.com/repos/qutebrowser/qutebrowser/tarball/v2.1.0 -> qutebrowser-2.1.0.tar.gz"
+SRC_URI="https://api.github.com/repos/qutebrowser/qutebrowser/tarball/v2.1.1 -> qutebrowser-2.1.1.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
