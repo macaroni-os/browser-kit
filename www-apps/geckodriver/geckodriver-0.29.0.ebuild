@@ -51,7 +51,7 @@ headers-0.3.4
 headers-core-0.2.0
 http-0.2.3
 http-body-0.3.1
-httparse-1.3.5
+httparse-1.3.6
 httpdate-0.3.2
 hyper-0.13.10
 idna-0.2.2
@@ -60,7 +60,7 @@ iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.92
+libc-0.2.93
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -138,7 +138,7 @@ tracing-futures-0.2.5
 try-lock-0.2.3
 typenum-1.13.0
 unicase-2.6.0
-unicode-bidi-0.3.4
+unicode-bidi-0.3.5
 unicode-normalization-0.1.17
 unicode-segmentation-1.7.1
 unicode-width-0.1.8
