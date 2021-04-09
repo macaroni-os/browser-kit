@@ -71,8 +71,8 @@ mime_guess-2.0.3
 miniz_oxide-0.4.4
 mio-0.6.23
 miow-0.2.2
-mozdevice-0.3.1
-mozprofile-0.7.1
+mozdevice-0.3.2
+mozprofile-0.7.2
 mozrunner-0.12.1
 mozversion-0.4.1
 msdos_time-0.1.6
@@ -152,7 +152,7 @@ want-0.3.0
 warp-0.2.5
 wasi-0.9.0+wasi-snapshot-preview1
 wasi-0.10.2+wasi-snapshot-preview1
-webdriver-0.43.0
+webdriver-0.43.1
 winapi-0.2.8
 winapi-0.3.9
 winapi-build-0.1.1
@@ -170,7 +170,7 @@ inherit cargo
 
 DESCRIPTION="Proxy for using WebDriver clients to interact with Gecko-based browsers."
 HOMEPAGE="https://hg.mozilla.org/mozilla-central/file/tip/testing/geckodriver"
-SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.29.0 -> geckodriver-0.29.0.tar.gz
+SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.29.1 -> geckodriver-0.29.1.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MPL-2.0"
