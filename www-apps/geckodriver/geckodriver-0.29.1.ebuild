@@ -83,9 +83,9 @@ once_cell-1.7.2
 opaque-debug-0.3.0
 percent-encoding-2.1.0
 pin-project-0.4.28
-pin-project-1.0.6
+pin-project-1.0.7
 pin-project-internal-0.4.28
-pin-project-internal-1.0.6
+pin-project-internal-1.0.7
 pin-project-lite-0.1.12
 pin-project-lite-0.2.6
 pin-utils-0.1.0
