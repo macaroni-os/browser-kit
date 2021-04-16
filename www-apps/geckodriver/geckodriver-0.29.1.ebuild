@@ -54,7 +54,7 @@ http-body-0.3.1
 httparse-1.3.6
 httpdate-0.3.2
 hyper-0.13.10
-idna-0.2.2
+idna-0.2.3
 indexmap-1.6.2
 iovec-0.1.4
 itoa-0.4.7
