@@ -101,7 +101,7 @@ rand_hc-0.3.0
 redox_syscall-0.1.57
 redox_syscall-0.2.6
 redox_users-0.3.5
-regex-1.4.5
+regex-1.4.6
 regex-syntax-0.6.23
 remove_dir_all-0.5.3
 rust-argon2-0.8.3
