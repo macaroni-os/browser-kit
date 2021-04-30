@@ -134,7 +134,7 @@ unicode-bidi-0.3.5
 unicode-normalization-0.1.17
 unicode-segmentation-1.7.1
 unicode-width-0.1.8
-unicode-xid-0.2.1
+unicode-xid-0.2.2
 url-2.2.1
 urlencoding-1.1.1
 uuid-0.8.2
