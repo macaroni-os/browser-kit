@@ -4,7 +4,7 @@ EAPI=7
 
 CRATES="
 adler-1.0.2
-aho-corasick-0.7.15
+aho-corasick-0.7.18
 autocfg-1.0.1
 base64-0.10.1
 base64-0.12.3
@@ -59,7 +59,7 @@ line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
 matches-0.1.8
-memchr-2.3.4
+memchr-2.4.0
 mime-0.3.16
 mime_guess-2.0.3
 miniz_oxide-0.4.4
@@ -94,8 +94,8 @@ rand_core-0.6.2
 rand_hc-0.3.0
 redox_syscall-0.2.7
 redox_users-0.4.0
-regex-1.4.6
-regex-syntax-0.6.23
+regex-1.5.1
+regex-syntax-0.6.24
 remove_dir_all-0.5.3
 rust-ini-0.10.3
 ryu-1.0.5
@@ -124,8 +124,8 @@ tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
 tower-service-0.3.1
-tracing-0.1.25
-tracing-core-0.1.17
+tracing-0.1.26
+tracing-core-0.1.18
 tracing-futures-0.2.5
 try-lock-0.2.3
 typenum-1.13.0
