@@ -94,7 +94,7 @@ rand_core-0.6.2
 rand_hc-0.3.0
 redox_syscall-0.2.7
 redox_users-0.4.0
-regex-1.5.1
+regex-1.5.2
 regex-syntax-0.6.24
 remove_dir_all-0.5.3
 rust-ini-0.10.3
