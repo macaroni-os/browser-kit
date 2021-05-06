@@ -19,7 +19,7 @@ cfg-if-1.0.0
 chrono-0.4.19
 clap-2.33.3
 cookie-0.12.0
-cpuid-bool-0.1.2
+cpufeatures-0.1.0
 crc32fast-1.2.1
 digest-0.9.0
 dirs-2.0.2
@@ -110,7 +110,7 @@ serde_json-1.0.64
 serde_repr-0.1.6
 serde_urlencoded-0.6.1
 serde_yaml-0.8.17
-sha-1-0.9.4
+sha-1-0.9.5
 slab-0.4.3
 socket2-0.3.19
 strsim-0.8.0
