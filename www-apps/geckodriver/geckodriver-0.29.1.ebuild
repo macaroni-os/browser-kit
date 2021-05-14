@@ -19,7 +19,7 @@ cfg-if-1.0.0
 chrono-0.4.19
 clap-2.33.3
 cookie-0.12.0
-cpufeatures-0.1.1
+cpufeatures-0.1.3
 crc32fast-1.2.1
 digest-0.9.0
 dirs-2.0.2
@@ -104,8 +104,8 @@ same-file-1.0.6
 scoped-tls-1.0.0
 semver-0.9.0
 semver-parser-0.7.0
-serde-1.0.125
-serde_derive-1.0.125
+serde-1.0.126
+serde_derive-1.0.126
 serde_json-1.0.64
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
