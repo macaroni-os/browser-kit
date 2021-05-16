@@ -19,7 +19,7 @@ cfg-if-1.0.0
 chrono-0.4.19
 clap-2.33.3
 cookie-0.12.0
-cpufeatures-0.1.3
+cpufeatures-0.1.4
 crc32fast-1.2.1
 digest-0.9.0
 dirs-2.0.2
@@ -136,7 +136,7 @@ unicode-segmentation-1.7.1
 unicode-width-0.1.8
 unicode-xid-0.2.2
 url-2.2.2
-urlencoding-1.3.1
+urlencoding-1.3.3
 uuid-0.8.2
 version_check-0.9.3
 walkdir-2.3.2
