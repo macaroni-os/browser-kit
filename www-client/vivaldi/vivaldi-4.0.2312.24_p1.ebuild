@@ -19,15 +19,14 @@ DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.8.2259.42-1_amd64.deb -> vivaldi-3.8.2259.42_p1-amd64.deb )
-	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.8.2259.42-1_arm64.deb -> vivaldi-3.8.2259.42_p1-arm64.deb )
-	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.8.2259.42-1_armhf.deb -> vivaldi-3.8.2259.42_p1-armhf.deb )
-	x86? ( https://downloads.vivaldi.com/stable/vivaldi-stable_3.8.2259.42-1_i386.deb -> vivaldi-3.8.2259.42_p1-i386.deb )
+	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.24-1_amd64.deb -> vivaldi-4.0.2312.24_p1-amd64.deb )
+	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.24-1_arm64.deb -> vivaldi-4.0.2312.24_p1-arm64.deb )
+	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.24-1_armhf.deb -> vivaldi-4.0.2312.24_p1-armhf.deb )
 "
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64 arm arm64 x86"
+KEYWORDS="-* amd64 arm arm64"
 
 DEPEND="virtual/libiconv"
 RDEPEND="
