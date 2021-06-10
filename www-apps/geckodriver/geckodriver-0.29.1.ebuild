@@ -89,7 +89,7 @@ ppv-lite86-0.2.10
 proc-macro2-1.0.27
 quote-1.0.9
 rand-0.8.3
-rand_chacha-0.3.0
+rand_chacha-0.3.1
 rand_core-0.6.2
 rand_hc-0.3.0
 redox_syscall-0.2.8
@@ -114,7 +114,7 @@ sha-1-0.9.6
 slab-0.4.3
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.72
+syn-1.0.73
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
