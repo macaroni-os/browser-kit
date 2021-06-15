@@ -88,10 +88,10 @@ podio-0.1.7
 ppv-lite86-0.2.10
 proc-macro2-1.0.27
 quote-1.0.9
-rand-0.8.3
+rand-0.8.4
 rand_chacha-0.3.1
-rand_core-0.6.2
-rand_hc-0.3.0
+rand_core-0.6.3
+rand_hc-0.3.1
 redox_syscall-0.2.8
 redox_users-0.4.0
 regex-1.5.4
