@@ -92,7 +92,7 @@ rand-0.8.4
 rand_chacha-0.3.1
 rand_core-0.6.3
 rand_hc-0.3.1
-redox_syscall-0.2.8
+redox_syscall-0.2.9
 redox_users-0.4.0
 regex-1.5.4
 regex-syntax-0.6.25
