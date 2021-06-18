@@ -19,9 +19,9 @@ DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.27-1_amd64.deb -> vivaldi-4.0.2312.27_p1-amd64.deb )
-	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.27-1_arm64.deb -> vivaldi-4.0.2312.27_p1-arm64.deb )
-	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.27-1_armhf.deb -> vivaldi-4.0.2312.27_p1-armhf.deb )
+	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.33-1_amd64.deb -> vivaldi-4.0.2312.33_p1-amd64.deb )
+	arm64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.33-1_arm64.deb -> vivaldi-4.0.2312.33_p1-arm64.deb )
+	arm? ( https://downloads.vivaldi.com/stable/vivaldi-stable_4.0.2312.33-1_armhf.deb -> vivaldi-4.0.2312.33_p1-armhf.deb )
 "
 
 LICENSE="Vivaldi"
