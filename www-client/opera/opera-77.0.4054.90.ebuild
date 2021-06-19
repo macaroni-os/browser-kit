@@ -1,4 +1,3 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,17 +13,8 @@ DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
 LICENSE="OPERA-2014"
 SLOT="0"
-SRC_URI_BASE="
-	https://download1.operacdn.com/pub/
-	https://download2.operacdn.com/pub/
-	https://download3.operacdn.com/pub/
-	https://download4.operacdn.com/pub/
-"
-for uri in ${SRC_URI_BASE}; do
-SRC_URI+="
-	"${uri}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb"
-"
-done
+SRC_URI="https://get.geo.opera.com/pub/opera/desktop/77.0.4054.90/linux/opera-stable_77.0.4054.90_amd64.deb"
+
 KEYWORDS="~amd64"
 
 RDEPEND="
