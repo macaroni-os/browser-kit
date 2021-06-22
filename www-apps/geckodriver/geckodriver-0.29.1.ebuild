@@ -19,7 +19,7 @@ cfg-if-1.0.0
 chrono-0.4.19
 clap-2.33.3
 cookie-0.12.0
-cpufeatures-0.1.4
+cpufeatures-0.1.5
 crc32fast-1.2.1
 digest-0.9.0
 dirs-2.0.2
