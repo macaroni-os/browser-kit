@@ -81,7 +81,7 @@ pin-project-1.0.7
 pin-project-internal-0.4.28
 pin-project-internal-1.0.7
 pin-project-lite-0.1.12
-pin-project-lite-0.2.6
+pin-project-lite-0.2.7
 pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
