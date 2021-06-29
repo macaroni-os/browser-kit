@@ -40,7 +40,7 @@ futures-util-0.3.15
 generic-array-0.14.4
 getrandom-0.2.3
 h2-0.2.7
-hashbrown-0.9.1
+hashbrown-0.11.2
 headers-0.3.4
 headers-core-0.2.0
 http-0.2.4
@@ -49,7 +49,7 @@ httparse-1.4.1
 httpdate-0.3.2
 hyper-0.13.10
 idna-0.2.3
-indexmap-1.6.2
+indexmap-1.7.0
 iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
