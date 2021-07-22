@@ -114,12 +114,12 @@ sha-1-0.9.7
 slab-0.4.3
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.73
+syn-1.0.74
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
 time-0.1.43
-tinyvec-1.3.0
+tinyvec-1.3.1
 tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
