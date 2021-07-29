@@ -106,7 +106,7 @@ semver-0.9.0
 semver-parser-0.7.0
 serde-1.0.126
 serde_derive-1.0.126
-serde_json-1.0.64
+serde_json-1.0.65
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
 serde_yaml-0.8.17
@@ -152,7 +152,7 @@ winapi-util-0.1.5
 winapi-x86_64-pc-windows-gnu-0.4.0
 winreg-0.5.1
 ws2_32-sys-0.2.1
-xml-rs-0.8.3
+xml-rs-0.8.4
 yaml-rust-0.4.5
 zip-0.4.2
 "
