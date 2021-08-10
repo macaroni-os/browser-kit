@@ -10,4 +10,4 @@ RDEPEND=gnome-base/gconf:2 dev-libs/libpthread-stubs x11-libs/libxcb x11-libs/li
 SLOT=0
 SRC_URI=https://github.com/brave/brave-browser/releases/download/v1.29.55/brave-browser-beta-1.29.55-linux-amd64.zip
 _eclasses_=chromium-2	92ff174aa2b13d6ea0c4539533f0b2de	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=3ab9782aece7e8433dad1c6d84ecb455
+_md5_=9b887a45608b27eacc7845d39d5bb3c2
