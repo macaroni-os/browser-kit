@@ -9,7 +9,7 @@ autocfg-1.0.1
 base64-0.10.1
 base64-0.12.3
 base64-0.13.0
-bitflags-1.2.1
+bitflags-1.3.1
 block-buffer-0.9.0
 byteorder-1.4.3
 bytes-0.5.6
@@ -58,7 +58,7 @@ libc-0.2.99
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
-matches-0.1.8
+matches-0.1.9
 memchr-2.4.0
 mime-0.3.16
 mime_guess-2.0.3
