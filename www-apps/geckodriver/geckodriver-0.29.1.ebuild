@@ -9,7 +9,7 @@ autocfg-1.0.1
 base64-0.10.1
 base64-0.12.3
 base64-0.13.0
-bitflags-1.3.1
+bitflags-1.3.2
 block-buffer-0.9.0
 byteorder-1.4.3
 bytes-0.5.6
