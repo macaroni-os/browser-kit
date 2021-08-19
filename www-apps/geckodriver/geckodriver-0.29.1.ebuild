@@ -45,7 +45,7 @@ headers-0.3.4
 headers-core-0.2.0
 http-0.2.4
 http-body-0.3.1
-httparse-1.4.1
+httparse-1.5.0
 httpdate-0.3.2
 hyper-0.13.10
 idna-0.2.3
@@ -59,7 +59,7 @@ line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
 matches-0.1.9
-memchr-2.4.0
+memchr-2.4.1
 mime-0.3.16
 mime_guess-2.0.3
 miniz_oxide-0.4.4
