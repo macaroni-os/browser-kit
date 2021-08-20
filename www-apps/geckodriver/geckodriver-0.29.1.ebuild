@@ -45,7 +45,7 @@ headers-0.3.4
 headers-core-0.2.0
 http-0.2.4
 http-body-0.3.1
-httparse-1.5.0
+httparse-1.5.1
 httpdate-0.3.2
 hyper-0.13.10
 idna-0.2.3
