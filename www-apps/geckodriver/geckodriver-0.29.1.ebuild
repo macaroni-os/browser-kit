@@ -54,7 +54,7 @@ iovec-0.1.4
 itoa-0.4.7
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.99
+libc-0.2.100
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -114,7 +114,7 @@ sha-1-0.9.7
 slab-0.4.4
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.74
+syn-1.0.75
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
