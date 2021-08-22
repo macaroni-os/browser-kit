@@ -51,7 +51,7 @@ hyper-0.13.10
 idna-0.2.3
 indexmap-1.7.0
 iovec-0.1.4
-itoa-0.4.7
+itoa-0.4.8
 kernel32-sys-0.2.2
 lazy_static-1.4.0
 libc-0.2.100
@@ -104,12 +104,12 @@ same-file-1.0.6
 scoped-tls-1.0.0
 semver-0.9.0
 semver-parser-0.7.0
-serde-1.0.127
-serde_derive-1.0.127
+serde-1.0.128
+serde_derive-1.0.128
 serde_json-1.0.66
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
-serde_yaml-0.8.18
+serde_yaml-0.8.19
 sha-1-0.9.7
 slab-0.4.4
 socket2-0.3.19
