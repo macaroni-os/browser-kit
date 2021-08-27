@@ -13,7 +13,7 @@ bitflags-1.3.2
 block-buffer-0.9.0
 byteorder-1.4.3
 bytes-0.5.6
-bytes-1.0.1
+bytes-1.1.0
 cfg-if-0.1.10
 cfg-if-1.0.0
 chrono-0.4.19
@@ -54,7 +54,7 @@ iovec-0.1.4
 itoa-0.4.8
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.100
+libc-0.2.101
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
@@ -109,7 +109,7 @@ serde_derive-1.0.129
 serde_json-1.0.66
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
-serde_yaml-0.8.19
+serde_yaml-0.8.20
 sha-1-0.9.7
 slab-0.4.4
 socket2-0.3.19
