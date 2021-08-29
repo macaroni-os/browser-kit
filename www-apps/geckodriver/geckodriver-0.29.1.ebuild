@@ -104,9 +104,9 @@ same-file-1.0.6
 scoped-tls-1.0.0
 semver-0.9.0
 semver-parser-0.7.0
-serde-1.0.129
-serde_derive-1.0.129
-serde_json-1.0.66
+serde-1.0.130
+serde_derive-1.0.130
+serde_json-1.0.67
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
 serde_yaml-0.8.20
