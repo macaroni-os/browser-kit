@@ -128,7 +128,7 @@ tracing-0.1.26
 tracing-core-0.1.19
 tracing-futures-0.2.5
 try-lock-0.2.3
-typenum-1.13.0
+typenum-1.14.0
 unicase-2.6.0
 unicode-bidi-0.3.6
 unicode-normalization-0.1.19
