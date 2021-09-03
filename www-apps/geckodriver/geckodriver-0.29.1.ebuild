@@ -86,7 +86,7 @@ pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
 ppv-lite86-0.2.10
-proc-macro2-1.0.28
+proc-macro2-1.0.29
 quote-1.0.9
 rand-0.8.4
 rand_chacha-0.3.1
@@ -128,7 +128,7 @@ tracing-0.1.26
 tracing-core-0.1.19
 tracing-futures-0.2.5
 try-lock-0.2.3
-typenum-1.13.0
+typenum-1.14.0
 unicase-2.6.0
 unicode-bidi-0.3.6
 unicode-normalization-0.1.19
