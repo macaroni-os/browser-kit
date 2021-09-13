@@ -25,7 +25,7 @@ digest-0.9.0
 dirs-2.0.2
 dirs-sys-0.3.6
 dtoa-0.4.8
-flate2-1.0.21
+flate2-1.0.22
 fnv-1.0.7
 form_urlencoded-1.0.1
 fuchsia-zircon-0.3.3
@@ -124,8 +124,8 @@ tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
 tower-service-0.3.1
-tracing-0.1.26
-tracing-core-0.1.19
+tracing-0.1.27
+tracing-core-0.1.20
 tracing-futures-0.2.5
 try-lock-0.2.3
 typenum-1.14.0
