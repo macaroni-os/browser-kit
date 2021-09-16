@@ -133,7 +133,7 @@ unicase-2.6.0
 unicode-bidi-0.3.6
 unicode-normalization-0.1.19
 unicode-segmentation-1.8.0
-unicode-width-0.1.8
+unicode-width-0.1.9
 unicode-xid-0.2.2
 unix_path-1.0.1
 unix_str-1.0.0
