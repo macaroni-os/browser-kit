@@ -43,7 +43,7 @@ h2-0.2.7
 hashbrown-0.11.2
 headers-0.3.4
 headers-core-0.2.0
-http-0.2.4
+http-0.2.5
 http-body-0.3.1
 httparse-1.5.1
 httpdate-0.3.2
