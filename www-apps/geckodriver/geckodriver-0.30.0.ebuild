@@ -119,7 +119,7 @@ tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
 time-0.1.43
-tinyvec-1.4.0
+tinyvec-1.5.0
 tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
