@@ -114,7 +114,7 @@ sha-1-0.9.8
 slab-0.4.4
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.78
+syn-1.0.80
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
@@ -124,7 +124,7 @@ tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
 tower-service-0.3.1
-tracing-0.1.28
+tracing-0.1.29
 tracing-core-0.1.21
 tracing-futures-0.2.5
 try-lock-0.2.3
