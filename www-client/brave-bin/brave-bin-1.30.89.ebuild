@@ -1,4 +1,3 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +18,7 @@ SRC_URI="https://github.com/brave/brave-browser/releases/download/v1.30.89/brave
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="*"
 IUSE="gnome-keyring"
 
 DEPEND="gnome-base/gconf:2"
@@ -101,7 +100,7 @@ src_install() {
 
 	exeinto ${BRAVE_HOME}
 		doexe brave
-		doexe crashpad_handler
+		doexe chrome_crashpad_handler
 
 	dosym ${BRAVE_HOME}/brave /usr/bin/${PN} || die
 
