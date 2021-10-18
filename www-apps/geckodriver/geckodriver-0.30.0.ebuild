@@ -41,12 +41,13 @@ generic-array-0.14.4
 getrandom-0.2.3
 h2-0.2.7
 hashbrown-0.11.2
-headers-0.3.4
+headers-0.3.5
 headers-core-0.2.0
 http-0.2.5
 http-body-0.3.1
 httparse-1.5.1
 httpdate-0.3.2
+httpdate-1.0.1
 hyper-0.13.10
 idna-0.2.3
 indexmap-1.7.0
