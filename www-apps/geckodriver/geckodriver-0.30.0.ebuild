@@ -47,7 +47,7 @@ http-0.2.5
 http-body-0.3.1
 httparse-1.5.1
 httpdate-0.3.2
-httpdate-1.0.1
+httpdate-1.0.2
 hyper-0.13.10
 idna-0.2.3
 indexmap-1.7.0
