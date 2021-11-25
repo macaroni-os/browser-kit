@@ -107,7 +107,7 @@ semver-0.9.0
 semver-parser-0.7.0
 serde-1.0.130
 serde_derive-1.0.130
-serde_json-1.0.71
+serde_json-1.0.72
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
 serde_yaml-0.8.21
@@ -115,7 +115,7 @@ sha-1-0.9.8
 slab-0.4.5
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.81
+syn-1.0.82
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
