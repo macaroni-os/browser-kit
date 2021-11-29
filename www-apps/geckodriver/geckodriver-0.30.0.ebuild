@@ -99,7 +99,7 @@ regex-1.5.4
 regex-syntax-0.6.25
 remove_dir_all-0.5.3
 rust-ini-0.10.3
-ryu-1.0.5
+ryu-1.0.6
 safemem-0.3.3
 same-file-1.0.6
 scoped-tls-1.0.0
