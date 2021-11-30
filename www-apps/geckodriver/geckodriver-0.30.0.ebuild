@@ -17,7 +17,7 @@ bytes-1.1.0
 cfg-if-0.1.10
 cfg-if-1.0.0
 chrono-0.4.19
-clap-2.33.3
+clap-2.34.0
 cookie-0.12.0
 cpufeatures-0.2.1
 crc32fast-1.2.2
