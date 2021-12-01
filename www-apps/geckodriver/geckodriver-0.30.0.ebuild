@@ -20,7 +20,7 @@ chrono-0.4.19
 clap-2.34.0
 cookie-0.12.0
 cpufeatures-0.2.1
-crc32fast-1.2.2
+crc32fast-1.3.0
 digest-0.9.0
 dirs-2.0.2
 dirs-sys-0.3.6
