@@ -55,7 +55,7 @@ iovec-0.1.4
 itoa-0.4.8
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.108
+libc-0.2.109
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
