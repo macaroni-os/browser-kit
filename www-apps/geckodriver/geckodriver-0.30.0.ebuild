@@ -87,7 +87,7 @@ pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
 ppv-lite86-0.2.15
-proc-macro2-1.0.32
+proc-macro2-1.0.33
 quote-1.0.10
 rand-0.8.4
 rand_chacha-0.3.1
