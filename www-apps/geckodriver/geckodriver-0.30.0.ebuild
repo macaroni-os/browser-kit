@@ -110,7 +110,7 @@ serde_derive-1.0.131
 serde_json-1.0.72
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
-serde_yaml-0.8.21
+serde_yaml-0.8.23
 sha-1-0.9.8
 slab-0.4.5
 socket2-0.3.19
