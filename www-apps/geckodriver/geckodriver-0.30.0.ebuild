@@ -31,11 +31,11 @@ form_urlencoded-1.0.1
 fuchsia-zircon-0.3.3
 fuchsia-zircon-sys-0.3.3
 futures-0.3.17
-futures-channel-0.3.18
-futures-core-0.3.18
-futures-io-0.3.18
-futures-sink-0.3.18
-futures-task-0.3.18
+futures-channel-0.3.17
+futures-core-0.3.17
+futures-io-0.3.17
+futures-sink-0.3.17
+futures-task-0.3.17
 futures-util-0.3.17
 generic-array-0.14.4
 getrandom-0.2.3
