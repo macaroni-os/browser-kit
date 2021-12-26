@@ -78,10 +78,10 @@ num-traits-0.2.14
 once_cell-1.9.0
 opaque-debug-0.3.0
 percent-encoding-2.1.0
-pin-project-0.4.28
-pin-project-1.0.8
-pin-project-internal-0.4.28
-pin-project-internal-1.0.8
+pin-project-0.4.29
+pin-project-1.0.9
+pin-project-internal-0.4.29
+pin-project-internal-1.0.9
 pin-project-lite-0.1.12
 pin-project-lite-0.2.7
 pin-utils-0.1.0
@@ -116,7 +116,7 @@ sha-1-0.9.8
 slab-0.4.5
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.83
+syn-1.0.84
 tempfile-3.2.0
 term_size-0.3.2
 textwrap-0.11.0
@@ -130,7 +130,7 @@ tracing-0.1.29
 tracing-core-0.1.21
 tracing-futures-0.2.5
 try-lock-0.2.3
-typenum-1.14.0
+typenum-1.15.0
 unicase-2.6.0
 unicode-bidi-0.3.7
 unicode-normalization-0.1.19
