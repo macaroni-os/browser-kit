@@ -142,7 +142,7 @@ unix_str-1.0.0
 url-2.2.2
 urlencoding-1.3.3
 uuid-0.8.2
-version_check-0.9.3
+version_check-0.9.4
 walkdir-2.3.2
 want-0.3.0
 warp-0.2.5
