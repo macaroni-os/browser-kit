@@ -37,7 +37,7 @@ futures-io-0.3.19
 futures-sink-0.3.19
 futures-task-0.3.19
 futures-util-0.3.19
-generic-array-0.14.4
+generic-array-0.14.5
 getrandom-0.2.3
 h2-0.2.7
 hashbrown-0.11.2
