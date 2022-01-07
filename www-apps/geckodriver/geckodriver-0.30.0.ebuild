@@ -50,7 +50,7 @@ httpdate-0.3.2
 httpdate-1.0.2
 hyper-0.13.10
 idna-0.2.3
-indexmap-1.7.0
+indexmap-1.8.0
 iovec-0.1.4
 itoa-0.4.8
 itoa-1.0.1
