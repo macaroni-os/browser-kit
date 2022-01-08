@@ -25,6 +25,7 @@ digest-0.9.0
 dirs-2.0.2
 dirs-sys-0.3.6
 dtoa-0.4.8
+fastrand-1.6.0
 flate2-1.0.22
 fnv-1.0.7
 form_urlencoded-1.0.1
@@ -50,7 +51,8 @@ httpdate-0.3.2
 httpdate-1.0.2
 hyper-0.13.10
 idna-0.2.3
-indexmap-1.7.0
+indexmap-1.8.0
+instant-0.1.12
 iovec-0.1.4
 itoa-0.4.8
 itoa-1.0.1
@@ -87,13 +89,8 @@ pin-project-lite-0.2.8
 pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
-ppv-lite86-0.2.16
 proc-macro2-1.0.36
 quote-1.0.14
-rand-0.8.4
-rand_chacha-0.3.1
-rand_core-0.6.3
-rand_hc-0.3.1
 redox_syscall-0.2.10
 redox_users-0.4.0
 regex-1.5.4
@@ -117,7 +114,7 @@ slab-0.4.5
 socket2-0.3.19
 strsim-0.8.0
 syn-1.0.85
-tempfile-3.2.0
+tempfile-3.3.0
 term_size-0.3.2
 textwrap-0.11.0
 time-0.1.43
