@@ -143,7 +143,7 @@ version_check-0.9.4
 walkdir-2.3.2
 want-0.3.0
 warp-0.2.5
-wasi-0.10.3+wasi-snapshot-preview1
+wasi-0.10.2+wasi-snapshot-preview1
 webdriver-0.44.0
 winapi-0.2.8
 winapi-0.3.9
