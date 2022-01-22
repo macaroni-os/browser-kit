@@ -20,12 +20,12 @@ chrono-0.4.19
 clap-2.34.0
 cookie-0.12.0
 cpufeatures-0.2.1
-crc32fast-1.3.0
+crc32fast-1.3.1
 digest-0.9.0
 dirs-2.0.2
 dirs-sys-0.3.6
 dtoa-0.4.8
-fastrand-1.6.0
+fastrand-1.7.0
 flate2-1.0.22
 fnv-1.0.7
 form_urlencoded-1.0.1
@@ -90,7 +90,7 @@ pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
 proc-macro2-1.0.36
-quote-1.0.14
+quote-1.0.15
 redox_syscall-0.2.10
 redox_users-0.4.0
 regex-1.5.4
@@ -103,9 +103,9 @@ same-file-1.0.6
 scoped-tls-1.0.0
 semver-0.9.0
 semver-parser-0.7.0
-serde-1.0.133
-serde_derive-1.0.133
-serde_json-1.0.75
+serde-1.0.134
+serde_derive-1.0.134
+serde_json-1.0.76
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
 serde_yaml-0.8.23
