@@ -42,7 +42,7 @@ generic-array-0.14.5
 getrandom-0.2.4
 h2-0.2.7
 hashbrown-0.11.2
-headers-0.3.5
+headers-0.3.6
 headers-core-0.2.0
 http-0.2.6
 http-body-0.3.1
