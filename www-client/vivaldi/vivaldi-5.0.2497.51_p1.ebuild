@@ -19,7 +19,7 @@ DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_5.0.2497.48-1_amd64.deb -> vivaldi-5.0.2497.48_p1-amd64.deb )
+	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_5.0.2497.51-1_amd64.deb -> vivaldi-5.0.2497.51_p1-amd64.deb )
 "
 #	arm64? ( { {artifacts[1].src_uri}} )
 #	arm? ( { {artifacts[2].src_uri}} )
