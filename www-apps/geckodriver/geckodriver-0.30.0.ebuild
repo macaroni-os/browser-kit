@@ -131,7 +131,7 @@ typenum-1.15.0
 unicase-2.6.0
 unicode-bidi-0.3.7
 unicode-normalization-0.1.19
-unicode-segmentation-1.8.0
+unicode-segmentation-1.9.0
 unicode-width-0.1.9
 unicode-xid-0.2.2
 unix_path-1.0.1
