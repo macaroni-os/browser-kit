@@ -5,7 +5,7 @@ EAPI=7
 CRATES="
 adler-1.0.2
 aho-corasick-0.7.18
-autocfg-1.0.1
+autocfg-1.1.0
 base64-0.10.1
 base64-0.12.3
 base64-0.13.0
@@ -20,7 +20,7 @@ chrono-0.4.19
 clap-2.34.0
 cookie-0.12.0
 cpufeatures-0.2.1
-crc32fast-1.3.1
+crc32fast-1.3.2
 digest-0.9.0
 dirs-2.0.2
 dirs-sys-0.3.6
