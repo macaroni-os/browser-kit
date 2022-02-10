@@ -10,7 +10,7 @@ base64-0.10.1
 base64-0.12.3
 base64-0.13.0
 bitflags-1.3.2
-block-buffer-0.9.0
+block-buffer-0.10.2
 byteorder-1.4.3
 bytes-0.5.6
 bytes-1.1.0
@@ -21,7 +21,8 @@ clap-2.34.0
 cookie-0.12.0
 cpufeatures-0.2.1
 crc32fast-1.3.2
-digest-0.9.0
+crypto-common-0.1.2
+digest-0.10.2
 dirs-2.0.2
 dirs-sys-0.3.6
 dtoa-0.4.8
@@ -42,7 +43,7 @@ generic-array-0.14.5
 getrandom-0.2.4
 h2-0.2.7
 hashbrown-0.11.2
-headers-0.3.6
+headers-0.3.7
 headers-core-0.2.0
 http-0.2.6
 http-body-0.3.1
@@ -78,7 +79,6 @@ net2-0.2.37
 num-integer-0.1.44
 num-traits-0.2.14
 once_cell-1.9.0
-opaque-debug-0.3.0
 percent-encoding-2.1.0
 pin-project-0.4.29
 pin-project-1.0.10
@@ -109,7 +109,7 @@ serde_json-1.0.78
 serde_repr-0.1.7
 serde_urlencoded-0.6.1
 serde_yaml-0.8.23
-sha-1-0.9.8
+sha-1-0.10.0
 slab-0.4.5
 socket2-0.3.19
 strsim-0.8.0
