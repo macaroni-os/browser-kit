@@ -21,8 +21,8 @@ clap-2.34.0
 cookie-0.12.0
 cpufeatures-0.2.1
 crc32fast-1.3.2
-crypto-common-0.1.2
-digest-0.10.2
+crypto-common-0.1.3
+digest-0.10.3
 dirs-2.0.2
 dirs-sys-0.3.6
 dtoa-0.4.8
