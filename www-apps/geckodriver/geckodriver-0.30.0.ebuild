@@ -66,7 +66,7 @@ log-0.4.14
 matches-0.1.9
 memchr-2.4.1
 mime-0.3.16
-mime_guess-2.0.3
+mime_guess-2.0.4
 miniz_oxide-0.4.4
 mio-0.6.23
 miow-0.2.2
