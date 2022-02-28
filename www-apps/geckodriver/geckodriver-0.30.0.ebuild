@@ -91,7 +91,7 @@ plist-0.5.5
 podio-0.1.7
 proc-macro2-1.0.36
 quote-1.0.15
-redox_syscall-0.2.10
+redox_syscall-0.2.11
 redox_users-0.4.0
 regex-1.5.4
 regex-syntax-0.6.25
