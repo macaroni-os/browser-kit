@@ -1,20 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit autotools prefix toolchain-funcs vcs-snapshot
+inherit autotools prefix toolchain-funcs
 
 MY_P="${P/_p/+git}"
 MY_PV="${PV/_p/+git}"
 
-DESCRIPTION="Text based WWW browser, supports tables and frames"
+S="${WORKDIR}/${MY_P}"
+DESCRIPTION="Debian's w3m: WWW browsable pager"
 HOMEPAGE="https://github.com/tats/w3m"
-SRC_URI="https://github.com/tats/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/tats/w3m/tarball/7edeee2041c7f8d7d03b6e4bd0d47d45592affb8 -> w3m-0.5.3-7edeee2.tar.gz"
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="*"
 IUSE="X fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
 REQUIRED_USE="X? ( ?? ( gdk-pixbuf imlib ) )
 	fbcon? ( ?? ( gdk-pixbuf imlib ) )"
@@ -38,9 +38,14 @@ RDEPEND="dev-libs/boehm-gc:=
 	xface? ( media-libs/compface )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-img-fb.patch" )
+
+post_src_unpack() {
+	if [ ! -d "${S}" ]; then
+		mv tats-w3m* "${S}" || die
+	fi
+}
+
 
 src_prepare() {
 	default
