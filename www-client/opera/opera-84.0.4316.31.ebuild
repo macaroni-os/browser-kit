@@ -13,7 +13,7 @@ DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
 LICENSE="OPERA-2014"
 SLOT="0"
-SRC_URI="https://get.geo.opera.com/pub/opera/desktop/84.0.4316.21/linux/opera-stable_84.0.4316.21_amd64.deb"
+SRC_URI="https://get.geo.opera.com/pub/opera/desktop/84.0.4316.31/linux/opera-stable_84.0.4316.31_amd64.deb"
 
 KEYWORDS="~amd64"
 

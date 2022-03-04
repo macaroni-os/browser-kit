@@ -78,7 +78,7 @@ msdos_time-0.1.6
 net2-0.2.37
 num-integer-0.1.44
 num-traits-0.2.14
-once_cell-1.9.0
+once_cell-1.10.0
 percent-encoding-2.1.0
 pin-project-0.4.29
 pin-project-1.0.10
