@@ -93,7 +93,7 @@ proc-macro2-1.0.36
 quote-1.0.15
 redox_syscall-0.2.11
 redox_users-0.4.0
-regex-1.5.4
+regex-1.5.5
 regex-syntax-0.6.25
 remove_dir_all-0.5.3
 rust-ini-0.10.3
