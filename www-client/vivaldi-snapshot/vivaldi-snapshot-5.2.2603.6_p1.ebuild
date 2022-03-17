@@ -19,6 +19,8 @@ SRC_URI="
 	arm? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-snapshot_5.2.2603.6-1_armhf.deb )
 "
 
+IUSE="widevine"
+
 LICENSE="Vivaldi"
 SLOT="0"
 KEYWORDS="-* amd64 arm64 arm"
@@ -52,6 +54,12 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango[X]
+	widevine? (
+		|| ( www-client/google-chrome
+			www-client/google-chrome-beta
+			www-client/google-chrome-unstable
+		)
+	)
 "
 QA_PREBUILT="*"
 S=${WORKDIR}
@@ -77,6 +85,8 @@ src_prepare() {
 		etc/cron.daily/ \
 		etc/ \
 		|| die
+
+	use widevine || (rm opt/vivaldi/WidevineCdm || die)
 
 	local c d
 	for d in 16 22 24 32 48 64 128 256; do
