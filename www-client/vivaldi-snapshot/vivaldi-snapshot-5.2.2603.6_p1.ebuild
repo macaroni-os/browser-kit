@@ -1,4 +1,3 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,27 +7,24 @@ CHROMIUM_LANGS="
 	lv mk ml mr ms nb nl nn pl pt-BR pt-PT ro ru sc sk sl sq sr sv sw ta te th
 	tr uk vi zh-CN zh-TW
 "
-inherit chromium-2 multilib unpacker toolchain-funcs xdg
+inherit chromium-2 multilib unpacker toolchain-funcs xdg-utils
 
 VIVALDI_HOME="opt/${PN}"
+MY_PN=${PN}-stable
 DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
-VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
-	arm64? ( ${VIVALDI_BASE_URI}arm64.deb -> ${P}-arm64.deb )
-	arm? ( ${VIVALDI_BASE_URI}armhf.deb -> ${P}-armhf.deb )
-	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
+	amd64? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-snapshot_5.2.2603.6-1_amd64.deb )
+	arm64? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-snapshot_5.2.2603.6-1_arm64.deb )
+	arm? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-snapshot_5.2.2603.6-1_armhf.deb )
 "
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~x86"
-RESTRICT="bindist mirror"
+KEYWORDS="-* amd64 arm64 arm"
 
-DEPEND="
-	virtual/libiconv
-"
+
+DEPEND="virtual/libiconv"
 RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
@@ -65,10 +61,10 @@ src_unpack() {
 }
 
 src_prepare() {
-	iconv -c -t UTF-8 usr/share/applications/${PN}.desktop > "${T}"/${PN}.desktop || die
-	mv "${T}"/${PN}.desktop usr/share/applications/${PN}.desktop || die
+	iconv -c -t UTF-8 usr/share/applications/${MY_PN}.desktop > "${T}"/${MY_PN}.desktop || die
+	mv "${T}"/${MY_PN}.desktop usr/share/applications/${MY_PN}.desktop || die
 
-	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
+	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
 	gunzip usr/share/doc/${PF}/changelog.gz || die
@@ -103,4 +99,14 @@ src_install() {
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
 	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

@@ -1,4 +1,3 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,25 +9,20 @@ CHROMIUM_LANGS="
 "
 inherit chromium-2 multilib unpacker toolchain-funcs xdg-utils
 
-#VIVALDI_BRANCH="snapshot"
-
-VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
-VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
-VIVALDI_HOME="opt/${VIVALDI_BIN}"
+VIVALDI_HOME="opt/${PN}"
+MY_PN=${PN}-stable
 DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
-VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
-	amd64? ( https://downloads.vivaldi.com/stable/vivaldi-stable_5.1.2567.66-1_amd64.deb -> vivaldi-5.1.2567.66_p1-amd64.deb )
+	amd64? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-stable_5.1.2567.66-1_amd64.deb )
+	arm64? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-stable_5.1.2567.66-1_arm64.deb )
+	arm? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-stable_5.1.2567.66-1_armhf.deb )
 "
-#	arm64? ( { {artifacts[1].src_uri}} )
-#	arm? ( { {artifacts[2].src_uri}} )
-#	x86? ( { {artifacts[3].src_uri}} )
-#"
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64" # arm arm64 x86"
+KEYWORDS="-* amd64 arm64 arm"
+
 
 DEPEND="virtual/libiconv"
 RDEPEND="
@@ -67,22 +61,17 @@ src_unpack() {
 }
 
 src_prepare() {
-	iconv -c -t UTF-8 usr/share/applications/${VIVALDI_PN}.desktop > "${T}"/${VIVALDI_PN}.desktop || die
-	mv "${T}"/${VIVALDI_PN}.desktop usr/share/applications/${VIVALDI_PN}.desktop || die
+	iconv -c -t UTF-8 usr/share/applications/${MY_PN}.desktop > "${T}"/${MY_PN}.desktop || die
+	mv "${T}"/${MY_PN}.desktop usr/share/applications/${MY_PN}.desktop || die
 
-	sed -i \
-		-e "s|${VIVALDI_BIN}|${PN}|g" \
-		usr/share/applications/${VIVALDI_PN}.desktop \
-		usr/share/xfce4/helpers/${VIVALDI_BIN}.desktop || die
-
-	mv usr/share/doc/${VIVALDI_PN} usr/share/doc/${PF} || die
+	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
 	gunzip usr/share/doc/${PF}/changelog.gz || die
 
 	rm \
 		_gpgbuilder \
-		etc/cron.daily/${VIVALDI_BIN} \
+		etc/cron.daily/${PN} \
 		|| die
 	rmdir \
 		etc/cron.daily/ \
@@ -109,7 +98,7 @@ src_install() {
 	mv * "${D}" || die
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
-	fperms 4711 /${VIVALDI_HOME}/${PN}-sandbox
+	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
 }
 
 pkg_postrm() {
