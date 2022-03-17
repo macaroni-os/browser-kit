@@ -24,7 +24,7 @@ crc32fast-1.3.2
 crypto-common-0.1.3
 digest-0.10.3
 dirs-2.0.2
-dirs-sys-0.3.6
+dirs-sys-0.3.7
 dtoa-0.4.8
 fastrand-1.7.0
 flate2-1.0.22
@@ -92,7 +92,7 @@ podio-0.1.7
 proc-macro2-1.0.36
 quote-1.0.15
 redox_syscall-0.2.11
-redox_users-0.4.1
+redox_users-0.4.2
 regex-1.5.5
 regex-syntax-0.6.25
 remove_dir_all-0.5.3
