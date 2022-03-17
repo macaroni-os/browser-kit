@@ -92,7 +92,7 @@ podio-0.1.7
 proc-macro2-1.0.36
 quote-1.0.15
 redox_syscall-0.2.11
-redox_users-0.4.0
+redox_users-0.4.1
 regex-1.5.5
 regex-syntax-0.6.25
 remove_dir_all-0.5.3
@@ -117,6 +117,8 @@ syn-1.0.89
 tempfile-3.3.0
 term_size-0.3.2
 textwrap-0.11.0
+thiserror-1.0.30
+thiserror-impl-1.0.30
 time-0.1.43
 tinyvec-1.5.1
 tinyvec_macros-0.1.0
