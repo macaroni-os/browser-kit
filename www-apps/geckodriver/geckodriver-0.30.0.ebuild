@@ -19,7 +19,7 @@ cfg-if-1.0.0
 chrono-0.4.19
 clap-2.34.0
 cookie-0.12.0
-cpufeatures-0.2.1
+cpufeatures-0.2.2
 crc32fast-1.3.2
 crypto-common-0.1.3
 digest-0.10.3
@@ -59,7 +59,7 @@ itoa-0.4.8
 itoa-1.0.1
 kernel32-sys-0.2.2
 lazy_static-1.4.0
-libc-0.2.120
+libc-0.2.121
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.14
