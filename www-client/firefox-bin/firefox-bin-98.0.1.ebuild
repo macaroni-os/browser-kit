@@ -8,7 +8,14 @@ MOZ_LANGS=( ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de ds
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
-MOZ_PN="${PN/-bin}"
+# Conditionally detect Firefox package name to support Firefox Developer Edition
+# https://bugs.funtoo.org/browse/FL-9572
+if [[ ${PN} == "firefox-dev-bin" ]]; then
+	MOZ_PN="${PN/-dev-bin}"
+else
+	MOZ_PN="${PN/-bin}"
+fi
+
 if [[ ${MOZ_ESR} == 1 ]]; then
 	# ESR releases have slightly version numbers
 	MOZ_PV="${MOZ_PV}esr"
@@ -91,7 +98,7 @@ src_unpack() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME=/opt/${MOZ_PN}
+	declare MOZILLA_FIVE_HOME=/opt/firefox
 
 	local size sizes icon_path icon name
 	sizes="16 32 48 128"
@@ -139,7 +146,7 @@ src_install() {
 		patchelf --set-rpath "${apulselib}" "${ED}"${MOZILLA_FIVE_HOME}/libxul.so || die
 	fi
 
-	# Create /usr/bin/firefox-bin
+	# Create /usr/bin/firefox-bin or /usr/bin/firefox-dev-bin
 	dodir /usr/bin/
 	local apulselib=$(usex pulseaudio "" $(usex alsa "/usr/$(get_libdir)/apulse:" ""))
 	cat <<-EOF >"${ED}"usr/bin/${PN}
@@ -147,7 +154,7 @@ src_install() {
 	unset LD_PRELOAD
 	LD_LIBRARY_PATH="${apulselib}/opt/firefox/" \\
 	GTK_PATH=/usr/$(get_libdir)/gtk-3.0/ \\
-	exec /opt/${MOZ_PN}/${MOZ_PN} "\$@"
+	exec /opt/firefox/${MOZ_PN} "\$@"
 	EOF
 	fperms 0755 /usr/bin/${PN}
 

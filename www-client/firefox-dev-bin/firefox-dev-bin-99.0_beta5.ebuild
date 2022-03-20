@@ -3,7 +3,7 @@
 EAPI=6
 MOZ_ESR=0
 
-MOZ_LANGS=( {{lang_codes}} )
+MOZ_LANGS=(  )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
@@ -98,7 +98,7 @@ src_unpack() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME={{ install_dir }}
+	declare MOZILLA_FIVE_HOME=/opt/firefox-dev
 
 	local size sizes icon_path icon name
 	sizes="16 32 48 128"
@@ -152,9 +152,9 @@ src_install() {
 	cat <<-EOF >"${ED}"usr/bin/${PN}
 	#!/bin/sh
 	unset LD_PRELOAD
-	LD_LIBRARY_PATH="${apulselib}{{ install_dir }}/" \\
+	LD_LIBRARY_PATH="${apulselib}/opt/firefox-dev/" \\
 	GTK_PATH=/usr/$(get_libdir)/gtk-3.0/ \\
-	exec {{install_dir }}/${MOZ_PN} "\$@"
+	exec /opt/firefox-dev/${MOZ_PN} "\$@"
 	EOF
 	fperms 0755 /usr/bin/${PN}
 
