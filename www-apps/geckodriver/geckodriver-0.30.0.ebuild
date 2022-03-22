@@ -62,7 +62,7 @@ lazy_static-1.4.0
 libc-0.2.121
 line-wrap-0.1.1
 linked-hash-map-0.5.4
-log-0.4.14
+log-0.4.16
 matches-0.1.9
 memchr-2.4.1
 mime-0.3.16
