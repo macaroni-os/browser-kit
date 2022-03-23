@@ -3,15 +3,19 @@
 EAPI=6
 MOZ_ESR=0
 
-MOZ_LANGS=( ach af an ar ast az be bg bn br bs ca ca-valencia cak cs cy da de dsb el en-CA en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my nb-NO ne-NP nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru sco si sk sl son sq sr sv-SE szl ta te th tl tr trs uk ur uz vi xh zh-CN zh-TW )
+MOZ_LANGS=(  )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
-# Conditionally detect Firefox package name to support Firefox Developer Edition
+# Conditionally detect Firefox package name to support Firefox Release Channels
 # https://bugs.funtoo.org/browse/FL-9572
-if [[ ${PN} == "firefox-dev-bin" ]]; then
+if [[ ${PN} == "firefox-beta-bin" ]]; then
+	MOZ_PN="${PN/-beta-bin}"
+elif [[ ${PN} == "firefox-dev-bin" ]]; then
 	MOZ_PN="${PN/-dev-bin}"
+elif [[ ${PN} == "firefox-nightly-bin" ]]; then
+	MOZ_PN="${PN/-nightly-bin}"
 else
 	MOZ_PN="${PN/-bin}"
 fi
@@ -20,16 +24,23 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 	# ESR releases have slightly version numbers
 	MOZ_PV="${MOZ_PV}esr"
 fi
+
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
-MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+if [[ ${PN} == "firefox-dev-bin" ]]; then
+	MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/devedition/releases/"
+elif [[ ${PN} == "firefox-nightly-bin" ]]; then
+	OZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/nightly/latest-mozilla-central/"
+else
+	MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+fi
 
 inherit mozlinguas-v2 nsplugins pax-utils xdg-utils eapi7-ver
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
-	amd64? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
-	x86? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+	amd64? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-100.0a1.en-US.linux-x86_64.tar.bz2 -> firefox-nightly-bin_x86_64-100.0_alpha1.tar.bz2 )
+	x86? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-100.0a1.en-US.linux-i686.tar.bz2 -> firefox-nightly-bin_i686-100.0_alpha1.tar.bz2 )"
 HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
 RESTRICT="strip mirror"
 
@@ -98,7 +109,7 @@ src_unpack() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME=/opt/firefox
+	declare MOZILLA_FIVE_HOME=/opt/firefox-nightly
 
 	local size sizes icon_path icon name
 	sizes="16 32 48 128"
@@ -137,9 +148,16 @@ src_install() {
 	newins "${FILESDIR}"/all-gentoo-3.js all-gentoo.js
 
 	# Install language packs
-	MOZEXTENSION_TARGET="distribution/extensions" \
-		MOZ_INSTALL_L10N_XPIFILE="1" \
-		mozlinguas_src_install
+	# Do not install for Firefox Nightly Release Channel at this time
+	# Nightly Releases have monolithic lang packs
+	# The get_lang_artifacts function from autogen.py will need to be refactored to support single lang packs
+	# Upstream Nightly xpi file name example: firefox-100.0a1.en-US.langpack.xpi
+	# Upstream Source URI example: http://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-100.0a1.en-US.langpack.xpi
+	if [[ ${PN} != "firefox-nightly-bin" ]]; then
+		MOZEXTENSION_TARGET="distribution/extensions" \
+			MOZ_INSTALL_L10N_XPIFILE="1" \
+			mozlinguas_src_install
+	fi
 
 	if use alsa && ! use pulseaudio; then
 		local apulselib="/usr/$(get_libdir)/apulse"
@@ -152,9 +170,9 @@ src_install() {
 	cat <<-EOF >"${ED}"usr/bin/${PN}
 	#!/bin/sh
 	unset LD_PRELOAD
-	LD_LIBRARY_PATH="${apulselib}/opt/firefox/" \\
+	LD_LIBRARY_PATH="${apulselib}/opt/firefox-nightly/" \\
 	GTK_PATH=/usr/$(get_libdir)/gtk-3.0/ \\
-	exec /opt/firefox/${MOZ_PN} "\$@"
+	exec /opt/firefox-nightly/${MOZ_PN} "\$@"
 	EOF
 	fperms 0755 /usr/bin/${PN}
 
