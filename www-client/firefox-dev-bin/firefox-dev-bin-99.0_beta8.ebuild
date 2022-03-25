@@ -39,8 +39,8 @@ inherit mozlinguas-v2 nsplugins pax-utils xdg-utils eapi7-ver
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
-	amd64? ( https://archive.mozilla.org/pub/firefox/releases/99.0b7/linux-x86_64/en-US/firefox-99.0b7.tar.bz2 -> firefox-beta-bin_x86_64-99.0_beta7.tar.bz2 )
-	x86? ( https://archive.mozilla.org/pub/firefox/releases/99.0b7/linux-i686/en-US/firefox-99.0b7.tar.bz2 -> firefox-beta-bin_i686-99.0_beta7.tar.bz2 )"
+	amd64? ( https://archive.mozilla.org/pub/devedition/releases/99.0b8/linux-x86_64/en-US/firefox-99.0b8.tar.bz2 -> firefox-dev-bin_x86_64-99.0_beta8.tar.bz2 )
+	x86? ( https://archive.mozilla.org/pub/devedition/releases/99.0b8/linux-i686/en-US/firefox-99.0b8.tar.bz2 -> firefox-dev-bin_i686-99.0_beta8.tar.bz2 )"
 HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
 RESTRICT="strip mirror"
 
@@ -109,7 +109,7 @@ src_unpack() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME=/opt/firefox-beta
+	declare MOZILLA_FIVE_HOME=/opt/firefox-dev
 
 	local size sizes icon_path icon name
 	sizes="16 32 48 128"
@@ -170,9 +170,9 @@ src_install() {
 	cat <<-EOF >"${ED}"usr/bin/${PN}
 	#!/bin/sh
 	unset LD_PRELOAD
-	LD_LIBRARY_PATH="${apulselib}/opt/firefox-beta/" \\
+	LD_LIBRARY_PATH="${apulselib}/opt/firefox-dev/" \\
 	GTK_PATH=/usr/$(get_libdir)/gtk-3.0/ \\
-	exec /opt/firefox-beta/${MOZ_PN} "\$@"
+	exec /opt/firefox-dev/${MOZ_PN} "\$@"
 	EOF
 	fperms 0755 /usr/bin/${PN}
 
