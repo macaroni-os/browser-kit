@@ -90,7 +90,7 @@ pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
 proc-macro2-1.0.36
-quote-1.0.16
+quote-1.0.17
 redox_syscall-0.2.12
 redox_users-0.4.2
 regex-1.5.5
