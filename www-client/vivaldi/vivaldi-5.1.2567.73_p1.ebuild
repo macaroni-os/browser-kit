@@ -14,16 +14,16 @@ MY_PN=${PN}-stable
 DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 SRC_URI="
-	amd64? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-stable_5.1.2567.66-1_amd64.deb )
-	arm64? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-stable_5.1.2567.66-1_arm64.deb )
-	arm? ( https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-stable_5.1.2567.66-1_armhf.deb )
+	amd64? ( https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_5.1.2567.73-1_amd64.deb )
+	arm64? ( https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_5.1.2567.73-1_arm64.deb )
+	armhf? ( https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_5.1.2567.73-1_armhf.deb )
 "
 
 IUSE="widevine"
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64 arm64 arm"
+KEYWORDS="-* amd64 arm64 armhf"
 
 
 DEPEND="virtual/libiconv"
