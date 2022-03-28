@@ -40,7 +40,7 @@ futures-sink-0.3.21
 futures-task-0.3.21
 futures-util-0.3.21
 generic-array-0.14.5
-getrandom-0.2.5
+getrandom-0.2.6
 h2-0.2.7
 hashbrown-0.11.2
 headers-0.3.7
