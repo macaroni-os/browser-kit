@@ -1,7 +1,6 @@
-# Copyright 2011-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
@@ -9,21 +8,14 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 
 inherit chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
 
-DESCRIPTION="The web browser from Google"
-HOMEPAGE="https://www.google.com/chrome"
-
-if [[ ${PN} == google-chrome ]]; then
-	KEYWORDS="-* amd64"
-	MY_PN=${PN}-stable
-else
-	KEYWORDS="-* ~amd64"
-	MY_PN=${PN}
-fi
-
+MY_PN=${PN}-stable
 MY_P="${MY_PN}_${PV}-1"
+S=${WORKDIR}
+DESCRIPTION="The web browser from Google (stable channel)"
+HOMEPAGE="https://www.google.com/chrome"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_99.0.4844.84-1_amd64.deb"
 
-SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb"
-
+KEYWORDS="-* amd64"
 LICENSE="google-chrome"
 SLOT="0"
 IUSE="selinux"
@@ -68,14 +60,13 @@ RDEPEND="
 
 QA_PREBUILT="*"
 QA_DESKTOP_FILE="usr/share/applications/google-chrome.*\\.desktop"
-S=${WORKDIR}
 CHROME_HOME="opt/google/chrome${PN#google-chrome}"
 
 pkg_nofetch() {
 	eerror "Please wait 24 hours and sync your tree before reporting a bug for google-chrome fetch failures."
 }
 
-retend() {
+pkg_pretend() {
 	# Protect against people using autounmask overzealously
 	use amd64 || die "google-chrome only works on amd64"
 }
@@ -108,27 +99,26 @@ src_install() {
 	popd > /dev/null || die
 
 	local suffix=
-	[[ ${PN} == google-chrome-beta ]] && suffix=_beta
-	[[ ${PN} == google-chrome-unstable ]] && suffix=_dev
 
 	local size
 	for size in 16 24 32 48 64 128 256 ; do
-		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}${suffix}.png" ${PN}.png
+		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
+		newins "${CHROME_HOME}/product_logo_${size}${suffix}.png" ${PN}.png
 	done
 
 	pax-mark m "${CHROME_HOME}/chrome"
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_icon_savelist
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
