@@ -52,7 +52,7 @@ httpdate-0.3.2
 httpdate-1.0.2
 hyper-0.13.10
 idna-0.2.3
-indexmap-1.8.0
+indexmap-1.8.1
 instant-0.1.12
 iovec-0.1.4
 itoa-0.4.8
@@ -91,8 +91,8 @@ plist-0.5.5
 podio-0.1.7
 proc-macro2-1.0.36
 quote-1.0.17
-redox_syscall-0.2.12
-redox_users-0.4.2
+redox_syscall-0.2.13
+redox_users-0.4.3
 regex-1.5.5
 regex-syntax-0.6.25
 remove_dir_all-0.5.3
