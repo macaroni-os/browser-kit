@@ -89,7 +89,7 @@ pin-project-lite-0.2.8
 pin-utils-0.1.0
 plist-0.5.5
 podio-0.1.7
-proc-macro2-1.0.36
+proc-macro2-1.0.37
 quote-1.0.17
 redox_syscall-0.2.13
 redox_users-0.4.3
@@ -113,7 +113,7 @@ sha-1-0.10.0
 slab-0.4.6
 socket2-0.3.19
 strsim-0.8.0
-syn-1.0.90
+syn-1.0.91
 tempfile-3.3.0
 term_size-0.3.2
 textwrap-0.11.0
