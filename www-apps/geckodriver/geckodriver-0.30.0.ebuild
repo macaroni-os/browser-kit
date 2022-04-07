@@ -73,7 +73,7 @@ miow-0.2.2
 mozdevice-0.4.0
 mozprofile-0.7.3
 mozrunner-0.13.0
-mozversion-0.4.2
+mozversion-0.4.3
 msdos_time-0.1.6
 net2-0.2.37
 num-integer-0.1.44
