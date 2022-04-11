@@ -17,7 +17,7 @@ bytes-1.1.0
 cfg-if-0.1.10
 cfg-if-1.0.0
 chrono-0.4.19
-clap-2.34.0
+clap-3.1.8
 cookie-0.12.0
 cpufeatures-0.2.2
 crc32fast-1.3.2
@@ -63,6 +63,7 @@ libc-0.2.122
 line-wrap-0.1.1
 linked-hash-map-0.5.4
 log-0.4.16
+marionette-0.2.0
 matches-0.1.9
 memchr-2.4.1
 mime-0.3.16
@@ -70,15 +71,16 @@ mime_guess-2.0.4
 miniz_oxide-0.4.4
 mio-0.6.23
 miow-0.2.2
-mozdevice-0.4.0
-mozprofile-0.7.3
-mozrunner-0.13.0
+mozdevice-0.5.0
+mozprofile-0.8.0
+mozrunner-0.14.0
 mozversion-0.4.3
 msdos_time-0.1.6
 net2-0.2.37
 num-integer-0.1.44
 num-traits-0.2.14
 once_cell-1.10.0
+os_str_bytes-6.0.0
 percent-encoding-2.1.0
 pin-project-0.4.29
 pin-project-1.0.10
@@ -112,11 +114,11 @@ serde_yaml-0.8.23
 sha-1-0.10.0
 slab-0.4.6
 socket2-0.3.19
-strsim-0.8.0
+strsim-0.10.0
 syn-1.0.91
 tempfile-3.3.0
-term_size-0.3.2
-textwrap-0.11.0
+terminal_size-0.1.17
+textwrap-0.15.0
 thiserror-1.0.30
 thiserror-impl-1.0.30
 time-0.1.43
@@ -125,7 +127,7 @@ tinyvec_macros-0.1.0
 tokio-0.2.25
 tokio-util-0.3.1
 tower-service-0.3.1
-tracing-0.1.33
+tracing-0.1.32
 tracing-core-0.1.24
 tracing-futures-0.2.5
 try-lock-0.2.3
@@ -134,7 +136,6 @@ unicase-2.6.0
 unicode-bidi-0.3.7
 unicode-normalization-0.1.19
 unicode-segmentation-1.9.0
-unicode-width-0.1.9
 unicode-xid-0.2.2
 unix_path-1.0.1
 unix_str-1.0.0
@@ -146,7 +147,7 @@ walkdir-2.3.2
 want-0.3.0
 warp-0.2.5
 wasi-0.10.2+wasi-snapshot-preview1
-webdriver-0.44.0
+webdriver-0.45.0
 winapi-0.2.8
 winapi-0.3.9
 winapi-build-0.1.1
@@ -164,7 +165,7 @@ inherit cargo
 
 DESCRIPTION="Proxy for using WebDriver clients to interact with Gecko-based browsers."
 HOMEPAGE="https://hg.mozilla.org/mozilla-central/file/tip/testing/geckodriver"
-SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.30.0 -> geckodriver-0.30.0.tar.gz
+SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.31.0 -> geckodriver-0.31.0.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MPL-2.0"
