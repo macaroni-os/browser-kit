@@ -13,7 +13,7 @@ MY_P="${MY_PN}_${PV}-1"
 S=${WORKDIR}
 DESCRIPTION="The web browser from Google (stable channel)"
 HOMEPAGE="https://www.google.com/chrome"
-SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_101.0.4951.41-1_amd64.deb"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_101.0.4951.54-1_amd64.deb"
 
 KEYWORDS="-* amd64"
 LICENSE="google-chrome"
