@@ -19,7 +19,7 @@ KEYWORDS="-* amd64"
 LICENSE="google-chrome"
 SLOT="0"
 IUSE="selinux"
-RESTRICT="bindist mirror strip"
+RESTRICT="bindist strip"
 
 DEPEND=""
 RDEPEND="

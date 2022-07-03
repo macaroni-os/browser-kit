@@ -119,7 +119,7 @@ SRC_URI="
 	
 "
 HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
-RESTRICT="strip mirror"
+RESTRICT="strip"
 
 KEYWORDS="-* ~amd64 ~x86"
 SLOT="0"
