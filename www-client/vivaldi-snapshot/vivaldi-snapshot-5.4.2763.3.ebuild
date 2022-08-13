@@ -10,20 +10,21 @@ CHROMIUM_LANGS="
 inherit chromium-2 multilib unpacker toolchain-funcs xdg-utils
 
 VIVALDI_HOME="opt/${PN}"
-MY_PN=${PN}-stable
+MY_PN=${PN}
 DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 SRC_URI="
-	arm64? ( https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_5.3.2679.73-1_arm64.deb -> vivaldi-stable_5.3.2679.73-1_arm64.deb )
-	armhf? ( https://repo.vivaldi.com/stable/deb/pool/main/vivaldi-stable_5.3.2679.73-1_armhf.deb -> vivaldi-stable_5.3.2679.73-1_armhf.deb )
+	amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_5.4.2763.3-1_amd64.deb -> vivaldi-snapshot_5.4.2763.3-1_amd64.deb )
+	arm64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_5.4.2763.3-1_arm64.deb -> vivaldi-snapshot_5.4.2763.3-1_arm64.deb )
+	arm? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_5.4.2763.3-1_armhf.deb -> vivaldi-snapshot_5.4.2763.3-1_armhf.deb )
 "
 
 IUSE="widevine"
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* arm64 armhf"
-
+KEYWORDS="-* ~amd64 ~arm64 ~arm"
+RESTRICT="bindist"
 
 DEPEND="virtual/libiconv"
 RDEPEND="
@@ -85,7 +86,7 @@ src_prepare() {
 		etc/ \
 		|| die
 
-	use widevine || (rm opt/vivaldi/WidevineCdm || die)
+	use widevine || (rm opt/${PN}/WidevineCdm || die)
 
 	local c d
 	for d in 16 22 24 32 48 64 128 256; do
