@@ -13,7 +13,7 @@ MY_P="${MY_PN}_${PV}-1"
 S=${WORKDIR}
 DESCRIPTION="The web browser from Google (dev channel)"
 HOMEPAGE="https://www.google.com/chrome"
-SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_106.0.5245.0-1_amd64.deb -> google-chrome-unstable_106.0.5245.0-1_amd64.deb"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_106.0.5249.12-1_amd64.deb -> google-chrome-unstable_106.0.5249.12-1_amd64.deb"
 
 KEYWORDS="-* ~amd64"
 LICENSE="google-chrome"
