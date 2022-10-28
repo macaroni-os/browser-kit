@@ -13,7 +13,7 @@ MY_P="${MY_PN}_${PV}-1"
 S=${WORKDIR}
 DESCRIPTION="The web browser from Google (beta channel)"
 HOMEPAGE="https://www.google.com/chrome"
-SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_107.0.5304.68-1_amd64.deb -> google-chrome-beta_107.0.5304.68-1_amd64.deb"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_108.0.5359.22-1_amd64.deb -> google-chrome-beta_108.0.5359.22-1_amd64.deb"
 
 KEYWORDS="-* ~amd64"
 LICENSE="google-chrome"

@@ -43,7 +43,7 @@ inherit autotools check-reqs desktop flag-o-matic gnome2-utils linux-info \
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
 SRC_URI="https://archive.mozilla.org/pub/firefox/releases/106.0.2/source/firefox-106.0.2.source.tar.xz -> firefox-106.0.2.source.tar.xz
-	https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-106-patches-02j.tar.xz -> firefox-106-patches-02j.tar.xz
+	https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-105-patches-05j.tar.xz -> firefox-105-patches-05j.tar.xz
 	l10n_ach? ( https://archive.mozilla.org/pub/firefox/releases/106.0.2/linux-x86_64/xpi/ach.xpi -> firefox-106.0.2-ach.xpi )
 	l10n_af? ( https://archive.mozilla.org/pub/firefox/releases/106.0.2/linux-x86_64/xpi/af.xpi -> firefox-106.0.2-af.xpi )
 	l10n_an? ( https://archive.mozilla.org/pub/firefox/releases/106.0.2/linux-x86_64/xpi/an.xpi -> firefox-106.0.2-an.xpi )
