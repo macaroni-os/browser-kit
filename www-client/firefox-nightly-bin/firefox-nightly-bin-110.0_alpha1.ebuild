@@ -2,7 +2,7 @@
 
 EAPI=7
 
-MOZ_LANGS=( ach af an ar ast az be bg bn bo br brx bs ca-valencia ca cak ckb cs cy da de dsb el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM hye ia id is it ja ka kab kk km kn ko lij lo lt ltg lv meh mk mr ms my nb-NO ne-NP nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru sat sc scn sco si sk sl son sq sr sv-SE szl ta te tg th tl tr trs uk ur uz vi wo xh zh-CN zh-TW fur )
+MOZ_LANGS=( ach af an ar ast az be bg bn bo br brx bs ca-valencia ca cak ckb cs cy da de dsb el en-CA en-GB eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fur fy-NL ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM hye ia id is it ja ka kab kk km kn ko lij lo lt ltg lv meh mk mr ms my nb-NO ne-NP nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru sat sc scn sco si sk sl son sq sr sv-SE szl ta te tg th tl tr trs uk ur uz vi wo xh zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
@@ -54,6 +54,7 @@ SRC_URI="
 	l10n_ff? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.ff.langpack.xpi -> firefox-110.0a1-ff.xpi )
 	l10n_fi? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.fi.langpack.xpi -> firefox-110.0a1-fi.xpi )
 	l10n_fr? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.fr.langpack.xpi -> firefox-110.0a1-fr.xpi )
+	l10n_fur? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.fur.langpack.xpi -> firefox-110.0a1-fur.xpi )
 	l10n_fy-NL? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.fy-NL.langpack.xpi -> firefox-110.0a1-fy-NL.xpi )
 	l10n_ga-IE? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.ga-IE.langpack.xpi -> firefox-110.0a1-ga-IE.xpi )
 	l10n_gd? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.gd.langpack.xpi -> firefox-110.0a1-gd.xpi )
@@ -127,7 +128,6 @@ SRC_URI="
 	l10n_xh? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.xh.langpack.xpi -> firefox-110.0a1-xh.xpi )
 	l10n_zh-CN? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.zh-CN.langpack.xpi -> firefox-110.0a1-zh-CN.xpi )
 	l10n_zh-TW? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.zh-TW.langpack.xpi -> firefox-110.0a1-zh-TW.xpi )
-	l10n_fur? ( https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-110.0a1.fur.langpack.xpi -> firefox-110.0a1-fur.xpi )
 	
 "
 HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
@@ -136,7 +136,7 @@ RESTRICT="strip"
 KEYWORDS="-* ~amd64 ~x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+alsa +ffmpeg geckodriver +pulseaudio selinux wayland startup-notification l10n_ach l10n_af l10n_an l10n_ar l10n_ast l10n_az l10n_be l10n_bg l10n_bn l10n_bo l10n_br l10n_brx l10n_bs l10n_ca-valencia l10n_ca l10n_cak l10n_ckb l10n_cs l10n_cy l10n_da l10n_de l10n_dsb l10n_el l10n_en-CA l10n_en-GB l10n_eo l10n_es-AR l10n_es-CL l10n_es-ES l10n_es-MX l10n_et l10n_eu l10n_fa l10n_ff l10n_fi l10n_fr l10n_fy-NL l10n_ga-IE l10n_gd l10n_gl l10n_gn l10n_gu-IN l10n_he l10n_hi-IN l10n_hr l10n_hsb l10n_hu l10n_hy-AM l10n_hye l10n_ia l10n_id l10n_is l10n_it l10n_ja l10n_ka l10n_kab l10n_kk l10n_km l10n_kn l10n_ko l10n_lij l10n_lo l10n_lt l10n_ltg l10n_lv l10n_meh l10n_mk l10n_mr l10n_ms l10n_my l10n_nb-NO l10n_ne-NP l10n_nl l10n_nn-NO l10n_oc l10n_pa-IN l10n_pl l10n_pt-BR l10n_pt-PT l10n_rm l10n_ro l10n_ru l10n_sat l10n_sc l10n_scn l10n_sco l10n_si l10n_sk l10n_sl l10n_son l10n_sq l10n_sr l10n_sv-SE l10n_szl l10n_ta l10n_te l10n_tg l10n_th l10n_tl l10n_tr l10n_trs l10n_uk l10n_ur l10n_uz l10n_vi l10n_wo l10n_xh l10n_zh-CN l10n_zh-TW l10n_fur"
+IUSE="+alsa +ffmpeg geckodriver +pulseaudio selinux wayland startup-notification l10n_ach l10n_af l10n_an l10n_ar l10n_ast l10n_az l10n_be l10n_bg l10n_bn l10n_bo l10n_br l10n_brx l10n_bs l10n_ca-valencia l10n_ca l10n_cak l10n_ckb l10n_cs l10n_cy l10n_da l10n_de l10n_dsb l10n_el l10n_en-CA l10n_en-GB l10n_eo l10n_es-AR l10n_es-CL l10n_es-ES l10n_es-MX l10n_et l10n_eu l10n_fa l10n_ff l10n_fi l10n_fr l10n_fur l10n_fy-NL l10n_ga-IE l10n_gd l10n_gl l10n_gn l10n_gu-IN l10n_he l10n_hi-IN l10n_hr l10n_hsb l10n_hu l10n_hy-AM l10n_hye l10n_ia l10n_id l10n_is l10n_it l10n_ja l10n_ka l10n_kab l10n_kk l10n_km l10n_kn l10n_ko l10n_lij l10n_lo l10n_lt l10n_ltg l10n_lv l10n_meh l10n_mk l10n_mr l10n_ms l10n_my l10n_nb-NO l10n_ne-NP l10n_nl l10n_nn-NO l10n_oc l10n_pa-IN l10n_pl l10n_pt-BR l10n_pt-PT l10n_rm l10n_ro l10n_ru l10n_sat l10n_sc l10n_scn l10n_sco l10n_si l10n_sk l10n_sl l10n_son l10n_sq l10n_sr l10n_sv-SE l10n_szl l10n_ta l10n_te l10n_tg l10n_th l10n_tl l10n_tr l10n_trs l10n_uk l10n_ur l10n_uz l10n_vi l10n_wo l10n_xh l10n_zh-CN l10n_zh-TW"
 
 DEPEND="app-arch/unzip
 	alsa? (
