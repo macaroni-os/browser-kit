@@ -8,14 +8,14 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 
 inherit chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
 
-MY_PN=${PN}-stable
+MY_PN=${PN}
 MY_P="${MY_PN}_${PV}-1"
 S=${WORKDIR}
-DESCRIPTION="The web browser from Google (stable channel)"
+DESCRIPTION="The web browser from Google (beta channel)"
 HOMEPAGE="https://www.google.com/chrome"
-SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_108.0.5359.124-1_amd64.deb -> google-chrome-stable_108.0.5359.124-1_amd64.deb"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_110.0.5481.30-1_amd64.deb -> google-chrome-beta_110.0.5481.30-1_amd64.deb"
 
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 LICENSE="google-chrome"
 SLOT="0"
 IUSE="selinux"
@@ -98,7 +98,7 @@ src_install() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
-	local suffix=
+	local suffix=_beta
 
 	local size
 	for size in 16 24 32 48 64 128 256 ; do
