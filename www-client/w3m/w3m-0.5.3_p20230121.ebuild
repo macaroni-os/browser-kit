@@ -10,7 +10,7 @@ MY_PV="${PV/_p/+git}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Debian's w3m: WWW browsable pager"
 HOMEPAGE="https://github.com/tats/w3m"
-SRC_URI="https://github.com/tats/w3m/tarball/c515ea8a47b62408943390f579b2f377464f6658 -> w3m-0.5.3_p20220429-c515ea8.tar.gz"
+SRC_URI="https://github.com/tats/w3m/tarball/c8223fed7cc631ad85d8e5665e509e7988bedbab -> w3m-0.5.3_p20230121-c8223fe.tar.gz"
 
 LICENSE="w3m"
 SLOT="0"
