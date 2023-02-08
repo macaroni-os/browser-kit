@@ -51,7 +51,7 @@ http-0.2.8
 http-body-0.4.5
 httparse-1.8.0
 httpdate-1.0.2
-hyper-0.14.23
+hyper-0.14.24
 iana-time-zone-0.1.53
 iana-time-zone-haiku-0.1.1
 idna-0.3.0
@@ -65,11 +65,11 @@ line-wrap-0.1.1
 link-cplusplus-1.0.8
 linked-hash-map-0.5.6
 log-0.4.17
-marionette-0.2.1
+marionette-0.3.0
 memchr-2.5.0
 mime-0.3.16
 mime_guess-2.0.4
-miniz_oxide-0.6.4
+miniz_oxide-0.6.2
 mio-0.8.5
 mozdevice-0.5.1
 mozprofile-0.9.1
@@ -85,7 +85,7 @@ pin-project-internal-1.0.12
 pin-project-lite-0.2.9
 pin-utils-0.1.0
 plist-1.4.0
-proc-macro2-1.0.50
+proc-macro2-1.0.51
 quick-xml-0.26.0
 quote-1.0.23
 redox_syscall-0.2.16
@@ -103,7 +103,7 @@ scratch-1.0.3
 semver-1.0.16
 serde-1.0.152
 serde_derive-1.0.152
-serde_json-1.0.91
+serde_json-1.0.92
 serde_repr-0.1.10
 serde_urlencoded-0.7.1
 serde_yaml-0.8.26
@@ -123,7 +123,7 @@ time-0.3.17
 time-core-0.1.0
 time-macros-0.2.6
 tinyvec-1.6.0
-tinyvec_macros-0.1.0
+tinyvec_macros-0.1.1
 tokio-1.25.0
 tokio-stream-0.1.11
 tokio-util-0.7.4
@@ -175,7 +175,7 @@ inherit cargo
 
 DESCRIPTION="Proxy for using WebDriver clients to interact with Gecko-based browsers."
 HOMEPAGE="https://hg.mozilla.org/mozilla-central/file/tip/testing/geckodriver"
-SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.32.1 -> geckodriver-0.32.1.tar.gz
+SRC_URI="https://api.github.com/repos/mozilla/geckodriver/tarball/v0.32.2 -> geckodriver-0.32.2.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MPL-2.0"
