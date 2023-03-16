@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=sys-libs/ncurses:0= sys-libs/zlib nls? ( virtual/libintl ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( dev-libs/libgcrypt:0= >=net-libs/gnutls-2.6.4:= ) ) bzip2? ( app-arch/bzip2 ) idn? ( net-dns/libidn:0= ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=An excellent console-based web browser with ssl support
+EAPI=7
+HOMEPAGE=https://lynx.invisible-island.net/
+IUSE=bzip2 cjk gnutls idn ipv6 nls ssl unicode libressl
+KEYWORDS=*
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0= sys-libs/zlib nls? ( virtual/libintl ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( dev-libs/libgcrypt:0= >=net-libs/gnutls-2.6.4:= ) ) bzip2? ( app-arch/bzip2 ) idn? ( net-dns/libidn:0= )
+SLOT=0
+SRC_URI=https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.0dev.12.tar.bz2 -> lynx2.9.0dev.12.tar.bz2
+_md5_=c5e57a2ec65c59a3dbc03e757bcfdef2
