@@ -1,13 +1,6 @@
-# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-# VERSIONING SCHEME TRANSLATION
-# Upstream	:	Gentoo
-# rel.		:	_p
-# pre.		:	_rc
-# dev.		:	_pre
+EAPI=7
 
 case ${PV} in
 	*_pre*) MY_P="${PN}${PV/_pre/dev.}" ;;
@@ -15,17 +8,18 @@ case ${PV} in
 	*_p*|*) MY_P="${PN}${PV/_p/rel.}" ;;
 esac
 
+S=${WORKDIR}/${MY_P}
 DESCRIPTION="An excellent console-based web browser with ssl support"
 HOMEPAGE="https://lynx.invisible-island.net/"
-SRC_URI="https://invisible-mirror.net/archives/lynx/tarballs/${MY_P}.tar.bz2"
+SRC_URI="https://invisible-mirror.net/archives/lynx/tarballs/lynx2.8.9rel.1.tar.bz2 -> lynx2.8.9rel.1.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="*"
 IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode libressl"
 
 RDEPEND="
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:0=
 	sys-libs/zlib
 	nls? ( virtual/libintl )
 	ssl? (
@@ -46,15 +40,13 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.8.6-mint.patch
-	"${FILESDIR}"/${P}-parallel.patch
+	"${FILESDIR}"/${PN}-mint.patch
+	"${FILESDIR}"/${PN}-parallel.patch
 )
 
 pkg_setup() {
-	! use ssl && elog "SSL support disabled; you will not be able to access secure websites."
+	use ssl || elog "SSL support disabled; you will not be able to access secure websites."
 }
 
 src_configure() {
@@ -93,8 +85,11 @@ src_compile() {
 src_install() {
 	emake install DESTDIR="${D}"
 
-	sed -i "s|^HELPFILE.*$|HELPFILE:file://localhost/usr/share/doc/${PF}/lynx_help/lynx_help_main.html|" \
-			"${ED}"/etc/lynx.cfg || die "lynx.cfg not found"
+	sed -i \
+		-e "s|^HELPFILE.*$|HELPFILE:file://localhost/usr/share/doc/${PF}/lynx_help/lynx_help_main.html|" \
+		-e "s|STARTFILE:https://lynx.invisible-island.net/|STARTFILE:https://funtoo.org/|" \
+		"${ED}"/etc/lynx.cfg || die "lynx.cfg not found"
+
 	if use unicode ; then
 		sed -i '/^#CHARACTER_SET:/ c\CHARACTER_SET:utf-8' \
 				"${ED}"/etc/lynx.cfg || die "lynx.cfg not found"
