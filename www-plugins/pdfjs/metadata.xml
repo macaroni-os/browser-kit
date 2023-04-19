@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>voyageur@gentoo.org</email>
-		<name>Bernard Cafarelli</name>
+		<email>hilobakho@gmail.com</email>
+		<name>Mykyta Holubakha</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">mozilla/pdf.js</remote-id>
