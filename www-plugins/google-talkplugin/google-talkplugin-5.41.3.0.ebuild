@@ -30,7 +30,7 @@ SLOT="0"
 LICENSE="Google-TOS openssl BSD"
 
 OBSOLETE="no"
-[[ $OBSOLETE = yes ]] && RESTRICT="bindist fetch strip" || RESTRICT="bindist strip mirror"
+[[ $OBSOLETE = yes ]] && RESTRICT="fetch strip" || RESTRICT="strip mirror"
 
 RDEPEND="|| ( media-sound/pulseaudio media-libs/alsa-lib )
 	dev-libs/expat
