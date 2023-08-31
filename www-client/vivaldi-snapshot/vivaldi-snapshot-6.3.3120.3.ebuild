@@ -14,9 +14,9 @@ MY_PN=${PN}
 DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 SRC_URI="
-	amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_6.3.3119.4-1_amd64.deb -> vivaldi-snapshot_6.3.3119.4-1_amd64.deb )
-	arm64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_6.3.3119.4-1_arm64.deb -> vivaldi-snapshot_6.3.3119.4-1_arm64.deb )
-	arm? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_6.3.3119.4-1_armhf.deb -> vivaldi-snapshot_6.3.3119.4-1_armhf.deb )
+	amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_6.3.3120.3-1_amd64.deb -> vivaldi-snapshot_6.3.3120.3-1_amd64.deb )
+	arm64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_6.3.3120.3-1_arm64.deb -> vivaldi-snapshot_6.3.3120.3-1_arm64.deb )
+	arm? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_6.3.3120.3-1_armhf.deb -> vivaldi-snapshot_6.3.3120.3-1_armhf.deb )
 "
 
 IUSE="widevine"
