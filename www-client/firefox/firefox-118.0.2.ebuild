@@ -43,7 +43,7 @@ inherit autotools check-reqs desktop flag-o-matic gnome2-utils linux-info \
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
 SRC_URI="https://archive.mozilla.org/pub/firefox/releases/118.0.2/source/firefox-118.0.2.source.tar.xz -> firefox-118.0.2.source.tar.xz
-	https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-118-patches-02.tar.xz -> firefox-118-patches-02.tar.xz
+	https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-118-patches-04.tar.xz -> firefox-118-patches-04.tar.xz
 	l10n_ach? ( https://archive.mozilla.org/pub/firefox/releases/118.0.2/linux-x86_64/xpi/ach.xpi -> firefox-118.0.2-ach.xpi )
 	l10n_af? ( https://archive.mozilla.org/pub/firefox/releases/118.0.2/linux-x86_64/xpi/af.xpi -> firefox-118.0.2-af.xpi )
 	l10n_an? ( https://archive.mozilla.org/pub/firefox/releases/118.0.2/linux-x86_64/xpi/an.xpi -> firefox-118.0.2-an.xpi )
@@ -786,9 +786,9 @@ src_configure() {
 	[[ -n ${MOZ_ESR} ]] && update_channel=esr
 	mozconfig_add_options_ac '' --update-channel=${update_channel}
 
-#	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
-#		mozconfig_add_options_ac '' --enable-rust-simd
-#	fi
+	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
+		mozconfig_add_options_ac '' --enable-rust-simd
+	fi
 
 	# For future keywording: This is currently (97.0) only supported on:
 	# amd64, arm, arm64 & x86.
