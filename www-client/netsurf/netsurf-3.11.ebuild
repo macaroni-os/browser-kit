@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 S="${WORKDIR}"/${MY_P}
 DESCRIPTION="A free, open source web browser"
 HOMEPAGE="https://www.netsurf-browser.org/"
-SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.10.tar.gz -> netsurf-all-3.10.tar.gz"
+SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.11.tar.gz -> netsurf-all-3.11.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
