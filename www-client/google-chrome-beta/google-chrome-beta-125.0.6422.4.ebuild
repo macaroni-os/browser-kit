@@ -11,9 +11,9 @@ inherit chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
 MY_PN=${PN}
 MY_P="${MY_PN}_${PV}-1"
 S=${WORKDIR}
-DESCRIPTION="The web browser from Google (dev channel)"
+DESCRIPTION="The web browser from Google (beta channel)"
 HOMEPAGE="https://www.google.com/chrome"
-SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_125.0.6396.3-1_amd64.deb -> google-chrome-unstable_125.0.6396.3-1_amd64.deb"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_125.0.6422.4-1_amd64.deb -> google-chrome-beta_125.0.6422.4-1_amd64.deb"
 
 KEYWORDS="-* ~amd64"
 LICENSE="google-chrome"
@@ -23,7 +23,6 @@ RESTRICT="bindist strip"
 
 DEPEND=""
 RDEPEND="
-	dev-libs/wayland
 	app-accessibility/at-spi2-atk:2
 	app-arch/bzip2
 	app-misc/ca-certificates
@@ -99,7 +98,7 @@ src_install() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
-	local suffix=_dev
+	local suffix=_beta
 
 	local size
 	for size in 16 24 32 48 64 128 256 ; do
