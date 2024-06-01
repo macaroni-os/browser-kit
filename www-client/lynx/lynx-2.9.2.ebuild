@@ -11,7 +11,7 @@ esac
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="An excellent console-based web browser with ssl support"
 HOMEPAGE="https://lynx.invisible-island.net/"
-SRC_URI="https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.1.tar.bz2 -> lynx2.9.1.tar.bz2"
+SRC_URI="https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.2.tar.bz2 -> lynx2.9.2.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
