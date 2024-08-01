@@ -6,7 +6,7 @@ inherit autotools desktop toolchain-funcs xdg-utils
 
 DESCRIPTION="A fast and lightweight web browser running in both graphics and text mode"
 HOMEPAGE="http://links.twibright.com/"
-SRC_URI="http://links.twibright.com/download/links-2.29.tar.bz2 -> links-2.29.tar.bz2
+SRC_URI="http://links.twibright.com/download/links-2.30.tar.bz2 -> links-2.30.tar.bz2
 	https://dashboard.snapcraft.io/site_media/appmedia/2018/07/links-graphics-xlinks-logo-pic.png -> links-graphics-xlinks-logo-pic.png
 	
 "
