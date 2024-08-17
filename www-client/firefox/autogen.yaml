@@ -6,7 +6,7 @@ firefox_gen:
   packages:
     - firefox:
         versions:
-          129.0:
+          128.0:
             unmasked: True
             description: "Firefox Web Browser"
             homepage: "https://www.mozilla.com/firefox"
