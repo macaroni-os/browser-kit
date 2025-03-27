@@ -2,11 +2,7 @@
 
 EAPI="7"
 
-# Patch version
-FIREFOX_PATCHSET="firefox-78esr-patches-19.tar.xz"
-SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
-
-LLVM_MAX_SLOT=12
+LLVM_MAX_SLOT=16
 
 PYTHON_COMPAT=( python3+ )
 
@@ -48,22 +44,16 @@ if [[ ${PV} == *_rc* ]] ; then
 	MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
 fi
 
-PATCH_URIS=(
-	https://dev.gentoo.org/~whissi/mozilla/patchsets/${FIREFOX_PATCHSET}
-	https://dev.gentoo.org/~whissi/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}
-)
-
-SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
-	${PATCH_URIS[@]}"
-
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-
-KEYWORDS="*"
+SRC_URI="https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz -> firefox-78.15.0esr.source.tar.xz
+https://distfiles-flat.macaronios.org/distfiles/firefox-78esr-patches-19.tar.xz -> firefox-78esr-patches-19.tar.xz
+https://distfiles-flat.macaronios.org/distfiles/spidermonkey-78-patches-04.tar.xz -> spidermonkey-78-patches-04.tar.xz"
+LICENSE="MPL-2.0"
 
 SLOT="78"
-LICENSE="MPL-2.0"
 IUSE="clang cpu_flags_arm_neon debug +jit lto test"
+KEYWORDS="*"
 
 RESTRICT="!test? ( test )"
 
@@ -72,24 +62,10 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	|| (
 		(
-			sys-devel/llvm:12
+			sys-devel/llvm:16
 			clang? (
-				sys-devel/clang:12
-				lto? ( =sys-devel/lld-12* )
-			)
-		)
-		(
-			sys-devel/llvm:11
-			clang? (
-				sys-devel/clang:11
-				lto? ( =sys-devel/lld-11* )
-			)
-		)
-		(
-			sys-devel/llvm:10
-			clang? (
-				sys-devel/clang:10
-				lto? ( =sys-devel/lld-10* )
+				sys-devel/clang:16
+				lto? ( =sys-devel/lld-16* )
 			)
 		)
 	)
