@@ -204,10 +204,6 @@ src_prepare() {
 		python/mozbuild/mozbuild/configure/check_debug_ranges.py \
 		|| die "sed failed to set toolchain prefix"
 
-	# fix LLVM 16 compilation
-	sed -i -e "s|'-fexperimental-new-pass-manager'||g" \
-		build/moz.configure/flags.configure || die
-
 	# use prefix shell in wrapper linker scripts, bug #789660
 	hprefixify "${S}"/../../build/cargo-{,host-}linker
 
