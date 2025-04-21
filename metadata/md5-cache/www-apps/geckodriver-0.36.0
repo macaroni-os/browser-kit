@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/rust-1.37.0
+DEFINED_PHASES=compile configure install test unpack
+DESCRIPTION=Proxy for using W3C WebDriver compatible clients to interact with Gecko-based browsers.
+EAPI=7
+HOMEPAGE=https://hg.mozilla.org/mozilla-central/file/tip/testing/geckodriver https://github.com/mozilla/geckodriver
+IUSE=debug
+KEYWORDS=*
+LICENSE=MPL-2.0
+SLOT=0
+SRC_URI=https://github.com/mozilla/geckodriver/tarball/d139fa08c9c6f954bbd397dc29f646efc8aca023 -> geckodriver-0.36.0-d139fa0.tar.gz https://distfiles.macaronios.org/f0/65/74/f06574ce58e62670019585093fe9621ac7900690a63984e82ffc83cf2857e11db42f83c7906cef68345f03b2d9d00273b38305f66fdf8ed87de40abac4d5e1ab -> geckodriver-0.36.0-funtoo-crates-bundle-2eb8a4ae9a7fd729ffc7cddadce33ddff9d8fe82765597a30303b24c68eb534d1b385dff7bebddeb805dff17f8bd113dbe5a93d8a0576a2b197495e07e2e7ee9.tar.gz
+_eclasses_=cargo	a3e90d3e6ca8541d967cff212149cffc	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=29ff93f9d85de688cc0afcb8d505889f
