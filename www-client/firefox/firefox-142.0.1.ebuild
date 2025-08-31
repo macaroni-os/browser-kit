@@ -572,6 +572,9 @@ src_install() {
 	 # Install policy (currently only used to disable application updates)
 	insinto "${MOZILLA_FIVE_HOME}/distribution"
 	newins "${FILESDIR}"/distribution.ini distribution.ini
+	# Set version
+	sed -i -e "s|^version=.*|version=${PV}|g" \
+		${ED}/${MOZILLA_FIVE_HOME}/distribution/distribution.ini
 	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
 	 # Install system-wide preferences
 	local PREFS_DIR="${MOZILLA_FIVE_HOME}/browser/defaults/preferences"
