@@ -80,7 +80,8 @@ src_prepare() {
 	  mkdir -p usr/share/icons/hicolor/${d}x${d}/apps || die
 	  cp \
 	    ${VIVALDI_HOME}/product_logo_${d}.png \
-	    usr/share/icons/hicolor/${d}x${d}/apps/${PN}.png || die
+	    usr/share/icons/hicolor/${d}x${d}/apps/${PN}.png || \
+		ewarn "File product_logo_${d}.png not available."
 	done
 	pushd "${VIVALDI_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
