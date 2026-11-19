@@ -51,7 +51,6 @@ CDEPEND="dev-libs/libpthread-stubs
 	x11-libs/gtk+
 	x11-libs/gdk-pixbuf
 	virtual/libffi
-	dev-libs/libpcre
 	net-libs/gnutls
 	sys-libs/zlib
 	dev-libs/fribidi
